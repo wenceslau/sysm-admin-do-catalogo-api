@@ -150,9 +150,8 @@ public class Category extends AggregateRoot<CategoryID> implements Cloneable {
     @Override
     public Category clone() {
         try {
-            Category clone = (Category) super.clone();
-            // TODO: copy mutable state here, so the clone can't change the internals of the original
-            return clone;
+            // Copy mutable state here, so the clone can't change the internals of the original
+            return (Category) super.clone();
         } catch (CloneNotSupportedException e) {
             throw new AssertionError();
         }
