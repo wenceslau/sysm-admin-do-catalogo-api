@@ -6,6 +6,7 @@ import com.sysm.catalog.admin.domain.genre.GenreGateway;
 import com.sysm.catalog.admin.domain.pagination.Pagination;
 import com.sysm.catalog.admin.domain.pagination.SearchQuery;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
@@ -25,6 +26,12 @@ public class ListGenreUseCaseTest extends UseCaseTest {
 
     @Mock
     private GenreGateway genreGateway;
+
+    @BeforeEach
+    public void setUp() {
+        sleep();
+        Mockito.reset(getMocks().toArray());
+    }
 
     @Override
     protected List<Object> getMocks() {

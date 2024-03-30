@@ -38,18 +38,25 @@
         </dependency>
 
         <!-- JUnit Dependencies -->
+
+<!--        testImplementation platform('org.junit:junit-bom:5.9.1')-->
         <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter-api</artifactId>
-            <version>5.10.1</version>
-            <scope>test</scope>
+            <groupId>org.junit</groupId>
+            <artifactId>junit-bom</artifactId>
+            <version>5.9.1</version>
+            <type>pom</type>
+            <scope>import</scope>
         </dependency>
+
+<!--        testImplementation 'org.junit.jupiter:junit-jupiter'-->
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter</artifactId>
             <version>5.10.1</version>
             <scope>test</scope>
         </dependency>
+
+<!--        testImplementation 'org.mockito:mockito-junit-jupiter:5.7.0'-->
         <dependency>
             <groupId>org.mockito</groupId>
             <artifactId>mockito-junit-jupiter</artifactId>

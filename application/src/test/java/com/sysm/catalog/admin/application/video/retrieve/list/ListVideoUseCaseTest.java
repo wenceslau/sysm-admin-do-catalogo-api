@@ -8,6 +8,7 @@ import com.sysm.catalog.admin.domain.video.VideoGateway;
 import com.sysm.catalog.admin.domain.video.records.VideoPreview;
 import com.sysm.catalog.admin.domain.video.records.VideoSearchQuery;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
@@ -28,6 +29,12 @@ public class ListVideoUseCaseTest extends UseCaseTest {
 
     @Mock
     private VideoGateway videoGateway;
+
+    @BeforeEach
+    public void setUp() {
+        sleep();
+        Mockito.reset(getMocks().toArray());
+    }
 
     @Override
     protected List<Object> getMocks() {

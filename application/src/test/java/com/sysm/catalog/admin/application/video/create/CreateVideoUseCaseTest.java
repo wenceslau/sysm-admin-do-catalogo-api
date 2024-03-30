@@ -15,9 +15,11 @@ import com.sysm.catalog.admin.domain.resource.Resource;
 import com.sysm.catalog.admin.domain.video.*;
 import com.sysm.catalog.admin.domain.video.enums.VideoMediaType;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.Mockito;
 
 import java.time.Year;
 import java.util.ArrayList;
@@ -49,6 +51,12 @@ public class CreateVideoUseCaseTest extends UseCaseTest {
 
     @Mock
     private MediaResourceGateway mediaResourceGateway;
+
+    @BeforeEach
+    public void setUp() {
+        sleep();
+        Mockito.reset(getMocks().toArray());
+    }
 
     @Override
     protected List<Object> getMocks() {

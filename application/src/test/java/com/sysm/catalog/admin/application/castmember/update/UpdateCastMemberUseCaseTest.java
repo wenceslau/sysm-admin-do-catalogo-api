@@ -11,9 +11,11 @@ import com.sysm.catalog.admin.domain.castmember.CastMemberType;
 import com.sysm.catalog.admin.domain.exceptions.NotFoundException;
 import com.sysm.catalog.admin.domain.exceptions.NotificationException;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.Mockito;
 
 import java.util.List;
 import java.util.Objects;
@@ -31,13 +33,19 @@ public class UpdateCastMemberUseCaseTest extends UseCaseTest {
     @Mock
     private CastMemberGateway castMemberGateway;
 
+    @BeforeEach
+    public void setUp() {
+        sleep();
+        Mockito.reset(getMocks().toArray());
+    }
+
     @Override
     protected List<Object> getMocks() {
         return List.of(castMemberGateway);
     }
 
     @Test
-    public void givenAValidCommand_whenCallsUpdateCastMember_shouldReturnItsIdentifier() {
+    public void givenAValidCommand_whenCallsUpdateCastMember_shouldReturnItsIdentifier() throws Exception {
         // given
         final var aMember = CastMember.newMember("vin diesel", CastMemberType.DIRECTOR);
 
@@ -64,7 +72,9 @@ public class UpdateCastMemberUseCaseTest extends UseCaseTest {
         Assertions.assertNotNull(actualOutput);
         Assertions.assertEquals(expectedId.getValue(), actualOutput.id());
 
+        Thread.sleep(100);
         verify(castMemberGateway).findById(eq(expectedId));
+        Thread.sleep(100);
 
         verify(castMemberGateway).update(argThat(aUpdatedMember ->
                 Objects.equals(expectedId, aUpdatedMember.getId())

@@ -7,6 +7,7 @@ import com.sysm.catalog.admin.domain.genre.Genre;
 import com.sysm.catalog.admin.domain.genre.GenreGateway;
 import com.sysm.catalog.admin.domain.genre.GenreID;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
@@ -27,6 +28,12 @@ public class GetGenreByIdUseCaseTest extends UseCaseTest {
 
     @Mock
     private GenreGateway genreGateway;
+
+    @BeforeEach
+    public void setUp() {
+        sleep();
+        Mockito.reset(getMocks().toArray());
+    }
 
     @Override
     protected List<Object> getMocks() {

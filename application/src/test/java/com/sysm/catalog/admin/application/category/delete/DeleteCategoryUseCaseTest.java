@@ -5,6 +5,7 @@ import com.sysm.catalog.admin.domain.category.Category;
 import com.sysm.catalog.admin.domain.category.CategoryGateway;
 import com.sysm.catalog.admin.domain.category.CategoryID;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
@@ -21,6 +22,12 @@ public class DeleteCategoryUseCaseTest extends UseCaseTest {
 
     @InjectMocks
     private DefaultDeleteCategoryUseCase useCase;
+
+    @BeforeEach
+    public void setUp() {
+        sleep();
+        Mockito.reset(getMocks().toArray());
+    }
 
     @Override
     protected List<Object> getMocks() {

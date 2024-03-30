@@ -9,9 +9,11 @@ import com.sysm.catalog.admin.domain.castmember.CastMemberGateway;
 import com.sysm.catalog.admin.domain.pagination.Pagination;
 import com.sysm.catalog.admin.domain.pagination.SearchQuery;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.Mockito;
 
 import java.util.List;
 
@@ -27,6 +29,12 @@ public class ListCastMembersUseCaseTest extends UseCaseTest {
 
     @Mock
     private CastMemberGateway castMemberGateway;
+
+    @BeforeEach
+    public void setUp() {
+        sleep();
+        Mockito.reset(getMocks().toArray());
+    }
 
     @Override
     protected List<Object> getMocks() {

@@ -6,15 +6,15 @@ import com.sysm.catalog.admin.domain.category.CategoryGateway;
 import com.sysm.catalog.admin.domain.category.CategoryID;
 import com.sysm.catalog.admin.domain.exceptions.NotFoundException;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
-import org.mockito.Mockito;
+import org.mockito.*;
 
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.AdditionalAnswers.returnsFirstArg;
 import static org.mockito.ArgumentMatchers.*;
 import static org.mockito.Mockito.*;
@@ -26,6 +26,12 @@ public class UpdateCategoryUseCaseTest extends UseCaseTest {
 
     @Mock
     private CategoryGateway categoryGateway;
+
+    @BeforeEach
+    public void setUp() {
+        sleep();
+        Mockito.reset(categoryGateway);
+    }
 
     //1-Test do caminho feliz
     //2-Test passaando uma propriedade invalida
@@ -61,6 +67,7 @@ public class UpdateCategoryUseCaseTest extends UseCaseTest {
         when(categoryGateway.update(any()))
                 .thenAnswer(returnsFirstArg());
 
+        sleep(10);
         final var actualOutput = useCase.execute(aCommand).get();
 
 
@@ -69,16 +76,27 @@ public class UpdateCategoryUseCaseTest extends UseCaseTest {
 
         Mockito.verify(categoryGateway, times(1)).findById(eq(expectedId));
 
-        Mockito.verify(categoryGateway, times(1)).update(argThat(
-                aUpdatedCategory ->
-                        Objects.equals(expectedName, aUpdatedCategory.getName())
-                                && Objects.equals(expectedDescription, aUpdatedCategory.getDescription())
-                                && Objects.equals(expectedIsActive, aUpdatedCategory.isActive())
-                                && Objects.equals(expectedId, aUpdatedCategory.getId())
-                                && Objects.equals(aCategory.getCreatedAt(), aUpdatedCategory.getCreatedAt())
-                                && aCategory.getUpdatedAt().isBefore(aUpdatedCategory.getUpdatedAt())
-                                && Objects.isNull(aUpdatedCategory.getDeletedAt())
-        ));
+        var captor = ArgumentCaptor.forClass(Category.class);
+        Mockito.verify(categoryGateway, times(1)).update(captor.capture());
+        var aUpdatedCategory = captor.getValue();
+        assertEquals(expectedName, aUpdatedCategory.getName());
+        assertEquals(expectedDescription, aUpdatedCategory.getDescription());
+        assertEquals(expectedIsActive, aUpdatedCategory.isActive());
+        assertEquals(expectedId, aUpdatedCategory.getId());
+        assertEquals(aCategory.getCreatedAt(), aUpdatedCategory.getCreatedAt());
+        Assertions.assertTrue(aCategory.getUpdatedAt().isBefore(aUpdatedCategory.getUpdatedAt()));
+        Assertions.assertNull(aUpdatedCategory.getDeletedAt());
+
+//        Mockito.verify(categoryGateway, times(1)).update(argThat(
+//                aUpdatedCategory ->
+//                        Objects.equals(expectedName, aUpdatedCategory.getName())
+//                                && Objects.equals(expectedDescription, aUpdatedCategory.getDescription())
+//                                && Objects.equals(expectedIsActive, aUpdatedCategory.isActive())
+//                                && Objects.equals(expectedId, aUpdatedCategory.getId())
+//                                && Objects.equals(aCategory.getCreatedAt(), aUpdatedCategory.getCreatedAt())
+//                                && aCategory.getUpdatedAt().isBefore(aUpdatedCategory.getUpdatedAt())
+//                                && Objects.isNull(aUpdatedCategory.getDeletedAt())
+//        ));
     }
 
     @Test
@@ -101,8 +119,8 @@ public class UpdateCategoryUseCaseTest extends UseCaseTest {
 
         var notification = useCase.execute(aCommand).getLeft();
 
-        Assertions.assertEquals(expectedErrorCount, notification.getErrors().size());
-        Assertions.assertEquals(expectedErrorMessage, notification.firstError().getMessage());
+        assertEquals(expectedErrorCount, notification.getErrors().size());
+        assertEquals(expectedErrorMessage, notification.firstError().getMessage());
 
         verify(categoryGateway, times(0)).update(any());
     }
@@ -131,6 +149,7 @@ public class UpdateCategoryUseCaseTest extends UseCaseTest {
         Assertions.assertTrue(aCategory.isActive());
         Assertions.assertNull(aCategory.getDeletedAt());
 
+        sleep(10);
         final var actualOutput = useCase.execute(aCommand).get();
 
         Assertions.assertNotNull(actualOutput);
@@ -138,16 +157,27 @@ public class UpdateCategoryUseCaseTest extends UseCaseTest {
 
         Mockito.verify(categoryGateway, times(1)).findById(eq(expectedId));
 
-        Mockito.verify(categoryGateway, times(1)).update(argThat(
-                aUpdatedCategory ->
-                        Objects.equals(expectedName, aUpdatedCategory.getName())
-                                && Objects.equals(expectedDescription, aUpdatedCategory.getDescription())
-                                && Objects.equals(expectedIsActive, aUpdatedCategory.isActive())
-                                && Objects.equals(expectedId, aUpdatedCategory.getId())
-                                && Objects.equals(aCategory.getCreatedAt(), aUpdatedCategory.getCreatedAt())
-                                && aCategory.getUpdatedAt().isBefore(aUpdatedCategory.getUpdatedAt())
-                                && Objects.nonNull(aUpdatedCategory.getDeletedAt())
-        ));
+        var captor = ArgumentCaptor.forClass(Category.class);
+        Mockito.verify(categoryGateway, times(1)).update(captor.capture());
+        var aUpdatedCategory = captor.getValue();
+        assertEquals(expectedName, aUpdatedCategory.getName());
+        assertEquals(expectedDescription, aUpdatedCategory.getDescription());
+        assertEquals(expectedIsActive, aUpdatedCategory.isActive());
+        assertEquals(expectedId, aUpdatedCategory.getId());
+        assertEquals(aCategory.getCreatedAt(), aUpdatedCategory.getCreatedAt());
+        Assertions.assertTrue(aCategory.getUpdatedAt().isBefore(aUpdatedCategory.getUpdatedAt()));
+        Assertions.assertNotNull(aUpdatedCategory.getDeletedAt());
+
+//        Mockito.verify(categoryGateway, times(1)).update(argThat(
+//                aUpdatedCategory ->
+//                        Objects.equals(expectedName, aUpdatedCategory.getName())
+//                                && Objects.equals(expectedDescription, aUpdatedCategory.getDescription())
+//                                && Objects.equals(expectedIsActive, aUpdatedCategory.isActive())
+//                                && Objects.equals(expectedId, aUpdatedCategory.getId())
+//                                && Objects.equals(aCategory.getCreatedAt(), aUpdatedCategory.getCreatedAt())
+//                                && aCategory.getUpdatedAt().isBefore(aUpdatedCategory.getUpdatedAt())
+//                                && Objects.nonNull(aUpdatedCategory.getDeletedAt())
+//        ));
     }
 
     @Test
@@ -175,8 +205,8 @@ public class UpdateCategoryUseCaseTest extends UseCaseTest {
 
         var notification = useCase.execute(aCommand).getLeft();
 
-        Assertions.assertEquals(expectedErrorCount, notification.getErrors().size());
-        Assertions.assertEquals(expectedErrorMessage, notification.firstError().getMessage());
+        assertEquals(expectedErrorCount, notification.getErrors().size());
+        assertEquals(expectedErrorMessage, notification.firstError().getMessage());
 
         Mockito.verify(categoryGateway, times(1)).update(argThat(
                 aUpdatedCategory ->
@@ -208,7 +238,7 @@ public class UpdateCategoryUseCaseTest extends UseCaseTest {
         var domainException = Assertions.assertThrows(NotFoundException.class, () -> useCase.execute(aCommand));
 
         Assertions.assertNotNull(domainException);
-        Assertions.assertEquals(expectedErrorMessage, domainException.getMessage());
+        assertEquals(expectedErrorMessage, domainException.getMessage());
 
         verify(categoryGateway, times(1)).findById(CategoryID.from("123"));
 

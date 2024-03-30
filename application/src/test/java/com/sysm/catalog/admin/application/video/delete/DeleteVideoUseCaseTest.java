@@ -6,9 +6,11 @@ import com.sysm.catalog.admin.domain.video.MediaResourceGateway;
 import com.sysm.catalog.admin.domain.video.VideoGateway;
 import com.sysm.catalog.admin.domain.video.VideoID;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.Mockito;
 
 import java.util.List;
 
@@ -26,6 +28,12 @@ public class DeleteVideoUseCaseTest extends UseCaseTest {
 
     @Mock
     private MediaResourceGateway mediaResourceGateway;
+
+    @BeforeEach
+    public void setUp() {
+        sleep();
+        Mockito.reset(getMocks().toArray());
+    }
 
     @Override
     protected List<Object> getMocks() {

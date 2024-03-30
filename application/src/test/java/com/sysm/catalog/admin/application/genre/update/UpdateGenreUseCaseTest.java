@@ -7,6 +7,7 @@ import com.sysm.catalog.admin.domain.exceptions.NotificationException;
 import com.sysm.catalog.admin.domain.genre.Genre;
 import com.sysm.catalog.admin.domain.genre.GenreGateway;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
@@ -31,6 +32,12 @@ public class UpdateGenreUseCaseTest extends UseCaseTest {
 
     @InjectMocks
     private DefaultUpdateGenreUseCase useCase;
+
+    @BeforeEach
+    public void setUp() {
+        sleep();
+        Mockito.reset(genreGateway, categoryGateway);
+    }
 
     @Override
     protected List<Object> getMocks() {

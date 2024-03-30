@@ -7,10 +7,12 @@ import com.sysm.catalog.admin.domain.video.VideoGateway;
 import com.sysm.catalog.admin.domain.video.enums.MediaStatus;
 import com.sysm.catalog.admin.domain.video.enums.VideoMediaType;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentCaptor;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.Mockito;
 
 import java.util.List;
 import java.util.Optional;
@@ -26,6 +28,12 @@ public class UpdateMediaStatusUseCaseTest extends UseCaseTest {
 
     @Mock
     private VideoGateway videoGateway;
+
+    @BeforeEach
+    public void setUp() {
+        sleep();
+        Mockito.reset(getMocks().toArray());
+    }
 
     @Override
     protected List<Object> getMocks() {

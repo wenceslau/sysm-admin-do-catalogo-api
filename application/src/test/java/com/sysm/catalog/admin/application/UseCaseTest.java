@@ -34,4 +34,14 @@ public abstract class UseCaseTest implements BeforeEachCallback {
                 .toList();
     }
 
+    protected void sleep(int... time) {
+        try {
+            if (time.length > 0) {
+                Thread.sleep(time[0]);
+            } else {
+                Thread.sleep(25);
+            }
+        } catch (InterruptedException e) {
+        }
+    }
 }
