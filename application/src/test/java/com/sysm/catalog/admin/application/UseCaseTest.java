@@ -1,4 +1,4 @@
-package com.sysm.catalog.admin.application.category;
+package com.sysm.catalog.admin.application;
 
 import com.sysm.catalog.admin.domain.Identifier;
 import org.junit.jupiter.api.extension.BeforeEachCallback;

@@ -1,7 +1,7 @@
 package com.sysm.catalog.admin.application.category.retrieve.list;
 
 
-import com.sysm.catalog.admin.application.category.UseCaseTest;
+import com.sysm.catalog.admin.application.UseCaseTest;
 import com.sysm.catalog.admin.domain.category.Category;
 import com.sysm.catalog.admin.domain.category.CategoryGateway;
 import com.sysm.catalog.admin.domain.pagination.Pagination;
