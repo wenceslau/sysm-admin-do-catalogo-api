@@ -41,11 +41,14 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-undertow</artifactId>
         </dependency>
-        <dependency> <!--testImplementation('org.springframework.boot:spring-boot-starter-test')-->
+        <!--implementation('org.springframework.boot:spring-boot-starter-amqp')-->
+        <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
+            <artifactId>spring-boot-starter-amqp</artifactId>
         </dependency>
+
+
+        <!-- Swagger dependencies -->
         <dependency><!--implementation('org.springdoc:springdoc-openapi-webmvc-core:1.7.0')-->
             <groupId>org.springdoc</groupId>
             <artifactId>springdoc-openapi-webmvc-core</artifactId>
@@ -84,7 +87,7 @@
             <scope>test</scope>
         </dependency>
 
-        <!--Jakson dependencies-->
+        <!--Jackson dependencies-->
         <dependency><!--implementation('com.fasterxml.jackson.module:jackson-module-afterburner')-->
             <groupId>com.fasterxml.jackson.module</groupId>
             <artifactId>jackson-module-afterburner</artifactId>
@@ -103,6 +106,18 @@
         </dependency>
 
         <!--Tests dependencies-->
+        <dependency> <!--testImplementation('org.springframework.boot:spring-boot-starter-test')-->
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <!--testImplementation('org.springframework.amqp:spring-rabbit-test:2.4.4')-->
+        <dependency>
+            <groupId>org.springframework.amqp</groupId>
+            <artifactId>spring-rabbit-test</artifactId>
+            <version>2.4.4</version>
+            <scope>test</scope>
+        </dependency>
         <dependency><!--testImplementation('org.testcontainers:testcontainers:1.17.6')-->
             <groupId>org.testcontainers</groupId>
             <artifactId>testcontainers</artifactId>

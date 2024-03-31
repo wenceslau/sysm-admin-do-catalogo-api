@@ -8,6 +8,7 @@ import com.sysm.catalog.admin.infrastructure.aggregates.category.persistence.Cat
 import com.sysm.catalog.admin.infrastructure.aggregates.genre.persistence.GenreRepository;
 import com.sysm.catalog.admin.infrastructure.aggregates.video.persistence.VideoRepository;
 import com.sysm.catalog.admin.infrastructure.configuration.WebServerConfig;
+import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -22,6 +23,11 @@ public class Main {
         // Default profile
         System.setProperty(AbstractEnvironment.DEFAULT_PROFILES_PROPERTY_NAME, "development");
         SpringApplication.run(WebServerConfig.class, args);
+    }
+
+    @RabbitListener(queues = "video.encoded.queue")
+    void dummy() {
+
     }
 
     @Bean

@@ -1,4 +1,15 @@
+amqp:
+  host: localhost
+  port: 5672
+  username: adm_videos
+  password: 123456
+
 mysql:
   url: jdbc:mysql://localhost:${mysql.port}/adm_videos_test_e2e?useSSL=true&serverTimezone=UTC&characterEncoding=UTF-8&createDatabaseIfNotExist=true
   username: root
   password: 123456
+
+spring:
+  autoconfigure:
+    exclude:
+      - org.springframework.boot.autoconfigure.amqp.RabbitAutoConfiguration
