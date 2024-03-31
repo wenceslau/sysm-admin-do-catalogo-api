@@ -1,4 +1,4 @@
-package com.sysm.catalog.admin.infrastructure.it.category.update;
+package com.sysm.catalog.admin.infrastructure.integration.category.update;
 
 import com.sysm.catalog.admin.infrastructure.IntegrationTest;
 import com.sysm.catalog.admin.application.category.update.UpdateCategoryCommand;

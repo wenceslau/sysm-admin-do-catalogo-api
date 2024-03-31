@@ -1,8 +1,10 @@
 package com.sysm.catalog.admin.infrastructure;
 
 import com.sysm.catalog.admin.domain.aggregates.category.Category;
+import com.sysm.catalog.admin.domain.aggregates.genre.Genre;
 import com.sysm.catalog.admin.infrastructure.aggregates.category.persistence.CategoryJpaEntity;
 import com.sysm.catalog.admin.infrastructure.aggregates.category.persistence.CategoryRepository;
+import com.sysm.catalog.admin.infrastructure.aggregates.genre.persistence.GenreRepository;
 import com.sysm.catalog.admin.infrastructure.configuration.WebServerConfig;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.SpringApplication;
@@ -22,7 +24,7 @@ public class Main {
 
     @Bean
     @Profile("development")
-    public ApplicationRunner runner(CategoryRepository categoryRepository) {
+    public ApplicationRunner runnerTestCategory(CategoryRepository categoryRepository) {
         return args -> {
             System.out.println("Running test category repository...");
 
@@ -36,5 +38,18 @@ public class Main {
             categoryRepository.deleteById(categoryPersisted.getId());
         };
     }
+
+    @Bean
+    @Profile("development")
+    public ApplicationRunner runnerTestGenre(GenreRepository genreRepository) {
+        return args -> {
+            System.out.println("Running test genre repository...");
+
+            var list = genreRepository.findAll();
+            System.out.println("Size entities: "+ list.size());
+
+        };
+    }
+
 
 }

@@ -1,4 +1,4 @@
-package com.sysm.catalog.admin.infrastructure.it.category.retrieve.get;
+package com.sysm.catalog.admin.infrastructure.integration.category.retrieve.get;
 
 import com.sysm.catalog.admin.infrastructure.IntegrationTest;
 import com.sysm.catalog.admin.application.category.retrieve.get.GetCategoryByIdUseCase;

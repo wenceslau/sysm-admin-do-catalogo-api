@@ -1,4 +1,4 @@
-package com.sysm.catalog.admin.infrastructure.it.category.create;
+package com.sysm.catalog.admin.infrastructure.integration.category.create;
 
 import com.sysm.catalog.admin.infrastructure.IntegrationTest;
 import com.sysm.catalog.admin.application.category.create.CreateCategoryCommand;

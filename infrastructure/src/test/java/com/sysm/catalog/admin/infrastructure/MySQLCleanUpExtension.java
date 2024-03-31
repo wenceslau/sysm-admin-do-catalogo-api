@@ -1,6 +1,7 @@
 package com.sysm.catalog.admin.infrastructure;
 
 import com.sysm.catalog.admin.infrastructure.aggregates.category.persistence.CategoryRepository;
+import com.sysm.catalog.admin.infrastructure.aggregates.genre.persistence.GenreRepository;
 import org.junit.jupiter.api.extension.BeforeEachCallback;
 import org.junit.jupiter.api.extension.ExtensionContext;
 import org.springframework.data.repository.CrudRepository;
@@ -18,7 +19,7 @@ public class MySQLCleanUpExtension implements BeforeEachCallback {
         cleanUp(List.of(
 //                appContext.getBean(VideoRepository.class),
 //                appContext.getBean(CastMemberRepository.class),
-//                appContext.getBean(GenreRepository.class),
+                appContext.getBean(GenreRepository.class),
                 appContext.getBean(CategoryRepository.class)
         ));
     }
