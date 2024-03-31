@@ -8,6 +8,7 @@ import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Profile;
 import org.springframework.core.env.AbstractEnvironment;
 
 @SpringBootApplication
@@ -19,7 +20,8 @@ public class Main {
         SpringApplication.run(WebServerConfig.class, args);
     }
 
-    //@Bean
+    @Bean
+    @Profile("development")
     public ApplicationRunner runner(CategoryRepository categoryRepository) {
         return args -> {
             System.out.println("Running test category repository...");
