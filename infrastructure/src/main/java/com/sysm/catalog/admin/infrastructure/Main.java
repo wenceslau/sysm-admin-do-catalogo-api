@@ -6,6 +6,7 @@ import com.sysm.catalog.admin.infrastructure.aggregates.castmember.persistence.C
 import com.sysm.catalog.admin.infrastructure.aggregates.category.persistence.CategoryJpaEntity;
 import com.sysm.catalog.admin.infrastructure.aggregates.category.persistence.CategoryRepository;
 import com.sysm.catalog.admin.infrastructure.aggregates.genre.persistence.GenreRepository;
+import com.sysm.catalog.admin.infrastructure.aggregates.video.persistence.VideoRepository;
 import com.sysm.catalog.admin.infrastructure.configuration.WebServerConfig;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.SpringApplication;
@@ -59,6 +60,18 @@ public class Main {
             System.out.println("Running test CastMemberRepository...");
 
             var list = castMemberRepository.findAll();
+            System.out.println("Size entities: "+ list.size());
+
+        };
+    }
+
+    @Bean
+    @Profile("development")
+    public ApplicationRunner runnerTestVideo(VideoRepository videoRepository) {
+        return args -> {
+            System.out.println("Running test VideoRepository...");
+
+            var list = videoRepository.findAll();
             System.out.println("Size entities: "+ list.size());
 
         };
