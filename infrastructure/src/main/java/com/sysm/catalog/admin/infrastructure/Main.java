@@ -2,6 +2,7 @@ package com.sysm.catalog.admin.infrastructure;
 
 import com.sysm.catalog.admin.domain.aggregates.category.Category;
 import com.sysm.catalog.admin.domain.aggregates.genre.Genre;
+import com.sysm.catalog.admin.infrastructure.aggregates.castmember.persistence.CastMemberRepository;
 import com.sysm.catalog.admin.infrastructure.aggregates.category.persistence.CategoryJpaEntity;
 import com.sysm.catalog.admin.infrastructure.aggregates.category.persistence.CategoryRepository;
 import com.sysm.catalog.admin.infrastructure.aggregates.genre.persistence.GenreRepository;
@@ -26,7 +27,7 @@ public class Main {
     @Profile("development")
     public ApplicationRunner runnerTestCategory(CategoryRepository categoryRepository) {
         return args -> {
-            System.out.println("Running test category repository...");
+            System.out.println("Running test CategoryRepository...");
 
             var film = Category.newCategory("Filmes", "Filmes de todos os tipos", true);
             var categoryJpaEntity = CategoryJpaEntity.from(film);
@@ -43,7 +44,7 @@ public class Main {
     @Profile("development")
     public ApplicationRunner runnerTestGenre(GenreRepository genreRepository) {
         return args -> {
-            System.out.println("Running test genre repository...");
+            System.out.println("Running test GenreRepository...");
 
             var list = genreRepository.findAll();
             System.out.println("Size entities: "+ list.size());
@@ -51,5 +52,16 @@ public class Main {
         };
     }
 
+    @Bean
+    @Profile("development")
+    public ApplicationRunner runnerTestCastMember(CastMemberRepository castMemberRepository) {
+        return args -> {
+            System.out.println("Running test CastMemberRepository...");
+
+            var list = castMemberRepository.findAll();
+            System.out.println("Size entities: "+ list.size());
+
+        };
+    }
 
 }

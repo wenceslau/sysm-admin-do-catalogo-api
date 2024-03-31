@@ -12,7 +12,7 @@ import java.lang.annotation.*;
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
 @Inherited
-@ActiveProfiles("test-integration")
+@ActiveProfiles("test-e2e")
 @SpringBootTest(classes = WebServerConfig.class)
 @ExtendWith(MySQLCleanUpExtension.class)
 @AutoConfigureMockMvc

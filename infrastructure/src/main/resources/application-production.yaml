@@ -1,5 +1,5 @@
 mysql:
-  url: ${DATABASE_MYSQL_URL:jdbc:mysql://localhost:3306/adm_videos_v2?useSSL=true&serverTimezone=UTC&characterEncoding=UTF-8?createDatabaseIfNotExist=true}
+  url: ${DATABASE_MYSQL_URL:jdbc:mysql://localhost:3306/adm_videos_prod?useSSL=true&serverTimezone=UTC&characterEncoding=UTF-8?createDatabaseIfNotExist=true}
   username: ${DATABASE_MYSQL_USERNAME:root}
   password: ${DATABASE_MYSQL_PASSWORD:123456}
 

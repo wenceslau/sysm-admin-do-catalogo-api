@@ -1,6 +1,7 @@
 package com.sysm.catalog.admin.infrastructure.e2e.category;
 
 import com.sysm.catalog.admin.infrastructure.E2ETest;
+import com.sysm.catalog.admin.infrastructure.e2e.ContainerTest;
 import com.sysm.catalog.admin.infrastructure.e2e.MockDsl;
 import com.sysm.catalog.admin.infrastructure.aggregates.category.models.UpdateCategoryRequest;
 import com.sysm.catalog.admin.infrastructure.aggregates.category.persistence.CategoryRepository;
@@ -23,7 +24,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @E2ETest
 @Testcontainers
-public class CategoryE2ETest implements MockDsl {
+public class CategoryE2ETest extends ContainerTest implements MockDsl {
 
     @Autowired
     private MockMvc mvc;
@@ -31,16 +32,12 @@ public class CategoryE2ETest implements MockDsl {
     @Autowired
     private CategoryRepository categoryRepository;
 
-    //docker pull mysql:8.0
     @Container
-    private static final MySQLContainer MYSQL_CONTAINER = new MySQLContainer("mysql:8.0")
-            .withPassword("123456")
-            .withUsername("root")
-            .withDatabaseName("adm_videos");
+    private static final MySQLContainer MYSQL_CONTAINER = getMySQLContainer();
 
     @DynamicPropertySource
     public static void setDatasourceProperties(final DynamicPropertyRegistry registry) {
-        registry.add("mysql.port", () -> MYSQL_CONTAINER.getMappedPort(3306));
+        registryPort(registry);
     }
 
     @Override
