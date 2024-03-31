@@ -1,6 +1,6 @@
 package com.sysm.catalog.admin.application.video.create;
 
-import com.sysm.catalog.admin.domain.video.Video;
+import com.sysm.catalog.admin.domain.aggregates.video.Video;
 
 public record CreateVideoOutput(String id) {
 

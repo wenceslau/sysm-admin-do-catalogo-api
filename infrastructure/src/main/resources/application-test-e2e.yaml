@@ -1,0 +1,4 @@
+mysql:
+  url: jdbc:mysql://localhost:${mysql.port}/adm_videos_v2?useSSL=true&serverTimezone=UTC&characterEncoding=UTF-8?createDatabaseIfNotExist=true
+  username: root
+  password: 123456

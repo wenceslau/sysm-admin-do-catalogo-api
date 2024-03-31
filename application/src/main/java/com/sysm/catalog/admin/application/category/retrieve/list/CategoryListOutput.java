@@ -1,6 +1,6 @@
 package com.sysm.catalog.admin.application.category.retrieve.list;
 
-import com.sysm.catalog.admin.domain.category.Category;
+import com.sysm.catalog.admin.domain.aggregates.category.Category;
 
 import java.time.Instant;
 

@@ -1,7 +1,7 @@
 package com.sysm.catalog.admin.application.video.update;
 
 
-import com.sysm.catalog.admin.domain.video.Video;
+import com.sysm.catalog.admin.domain.aggregates.video.Video;
 
 public record UpdateVideoOutput(String id) {
 

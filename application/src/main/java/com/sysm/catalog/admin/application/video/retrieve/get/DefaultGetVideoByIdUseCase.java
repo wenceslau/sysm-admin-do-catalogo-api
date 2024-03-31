@@ -2,9 +2,9 @@ package com.sysm.catalog.admin.application.video.retrieve.get;
 
 
 import com.sysm.catalog.admin.domain.exceptions.NotFoundException;
-import com.sysm.catalog.admin.domain.video.Video;
-import com.sysm.catalog.admin.domain.video.VideoGateway;
-import com.sysm.catalog.admin.domain.video.VideoID;
+import com.sysm.catalog.admin.domain.aggregates.video.Video;
+import com.sysm.catalog.admin.domain.aggregates.video.VideoGateway;
+import com.sysm.catalog.admin.domain.aggregates.video.VideoID;
 
 import java.util.Objects;
 

@@ -1,8 +1,8 @@
 package com.sysm.catalog.admin.application.video.retrieve.list;
 
 
-import com.sysm.catalog.admin.domain.video.Video;
-import com.sysm.catalog.admin.domain.video.records.VideoPreview;
+import com.sysm.catalog.admin.domain.aggregates.video.Video;
+import com.sysm.catalog.admin.domain.aggregates.video.records.VideoPreview;
 
 import java.time.Instant;
 

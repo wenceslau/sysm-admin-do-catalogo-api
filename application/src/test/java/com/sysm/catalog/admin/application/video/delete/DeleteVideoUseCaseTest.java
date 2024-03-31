@@ -2,9 +2,9 @@ package com.sysm.catalog.admin.application.video.delete;
 
 import com.sysm.catalog.admin.application.UseCaseTest;
 import com.sysm.catalog.admin.domain.exceptions.InternalErrorException;
-import com.sysm.catalog.admin.domain.video.MediaResourceGateway;
-import com.sysm.catalog.admin.domain.video.VideoGateway;
-import com.sysm.catalog.admin.domain.video.VideoID;
+import com.sysm.catalog.admin.domain.aggregates.video.MediaResourceGateway;
+import com.sysm.catalog.admin.domain.aggregates.video.VideoGateway;
+import com.sysm.catalog.admin.domain.aggregates.video.VideoID;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

@@ -1,7 +1,7 @@
 package com.sysm.catalog.admin.application.castamember.create;
 
-import com.sysm.catalog.admin.domain.castmember.CastMember;
-import com.sysm.catalog.admin.domain.castmember.CastMemberGateway;
+import com.sysm.catalog.admin.domain.aggregates.castmember.CastMember;
+import com.sysm.catalog.admin.domain.aggregates.castmember.CastMemberGateway;
 import com.sysm.catalog.admin.domain.exceptions.NotificationException;
 import com.sysm.catalog.admin.domain.validation.handler.Notification;
 

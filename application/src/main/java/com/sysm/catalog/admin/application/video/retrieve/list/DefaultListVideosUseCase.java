@@ -1,8 +1,8 @@
 package com.sysm.catalog.admin.application.video.retrieve.list;
 
 import com.sysm.catalog.admin.domain.pagination.Pagination;
-import com.sysm.catalog.admin.domain.video.VideoGateway;
-import com.sysm.catalog.admin.domain.video.records.VideoSearchQuery;
+import com.sysm.catalog.admin.domain.aggregates.video.VideoGateway;
+import com.sysm.catalog.admin.domain.aggregates.video.records.VideoSearchQuery;
 
 import java.util.Objects;
 

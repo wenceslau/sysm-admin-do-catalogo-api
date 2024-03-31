@@ -1,6 +1,6 @@
 package com.sysm.catalog.admin.application.category.create;
 
-import com.sysm.catalog.admin.domain.category.Category;
+import com.sysm.catalog.admin.domain.aggregates.category.Category;
 
 public record CreateCategoryOutput(
     String id

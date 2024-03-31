@@ -1,0 +1,14 @@
+# Integration test configuration
+# This configuration use H2 in a memory database to run the integration tests
+spring:
+  datasource:
+    url: jdbc:h2:mem://adm_videos_test:MODE=MYSQL;DATABASE_TO_LOWER=TRUE
+    username: root
+    password: 123456
+    driver-class-name: org.h2.Driver
+  jpa:
+    defer-datasource-initialization: false
+  h2:
+    console:
+      enabled: true
+      path: /h2

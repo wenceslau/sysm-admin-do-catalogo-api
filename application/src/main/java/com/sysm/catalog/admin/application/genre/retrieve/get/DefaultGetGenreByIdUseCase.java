@@ -2,9 +2,9 @@ package com.sysm.catalog.admin.application.genre.retrieve.get;
 
 
 import com.sysm.catalog.admin.domain.exceptions.NotFoundException;
-import com.sysm.catalog.admin.domain.genre.Genre;
-import com.sysm.catalog.admin.domain.genre.GenreGateway;
-import com.sysm.catalog.admin.domain.genre.GenreID;
+import com.sysm.catalog.admin.domain.aggregates.genre.Genre;
+import com.sysm.catalog.admin.domain.aggregates.genre.GenreGateway;
+import com.sysm.catalog.admin.domain.aggregates.genre.GenreID;
 
 import java.util.Objects;
 

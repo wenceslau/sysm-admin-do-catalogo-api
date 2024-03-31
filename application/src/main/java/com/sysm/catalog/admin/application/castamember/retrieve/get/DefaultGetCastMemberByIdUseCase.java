@@ -1,9 +1,9 @@
 package com.sysm.catalog.admin.application.castamember.retrieve.get;
 
 
-import com.sysm.catalog.admin.domain.castmember.CastMember;
-import com.sysm.catalog.admin.domain.castmember.CastMemberGateway;
-import com.sysm.catalog.admin.domain.castmember.CastMemberID;
+import com.sysm.catalog.admin.domain.aggregates.castmember.CastMember;
+import com.sysm.catalog.admin.domain.aggregates.castmember.CastMemberGateway;
+import com.sysm.catalog.admin.domain.aggregates.castmember.CastMemberID;
 import com.sysm.catalog.admin.domain.exceptions.NotFoundException;
 
 import java.util.Objects;

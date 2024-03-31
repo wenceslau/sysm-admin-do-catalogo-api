@@ -1,14 +1,17 @@
 package com.sysm.catalog.admin.application.video.media.update;
 
+import com.sysm.catalog.admin.domain.aggregates.video.AudioVideoMedia;
+import com.sysm.catalog.admin.domain.aggregates.video.Video;
+import com.sysm.catalog.admin.domain.aggregates.video.VideoGateway;
+import com.sysm.catalog.admin.domain.aggregates.video.VideoID;
 import com.sysm.catalog.admin.domain.exceptions.NotFoundException;
-import com.sysm.catalog.admin.domain.video.*;
-import com.sysm.catalog.admin.domain.video.enums.MediaStatus;
-import com.sysm.catalog.admin.domain.video.enums.VideoMediaType;
+import com.sysm.catalog.admin.domain.aggregates.video.enums.MediaStatus;
+import com.sysm.catalog.admin.domain.aggregates.video.enums.VideoMediaType;
 
 import java.util.Objects;
 
-import static com.sysm.catalog.admin.domain.video.enums.VideoMediaType.TRAILER;
-import static com.sysm.catalog.admin.domain.video.enums.VideoMediaType.VIDEO;
+import static com.sysm.catalog.admin.domain.aggregates.video.enums.VideoMediaType.TRAILER;
+import static com.sysm.catalog.admin.domain.aggregates.video.enums.VideoMediaType.VIDEO;
 
 
 public class DefaultUpdateMediaStatusUseCase extends UpdateMediaStatusUseCase {

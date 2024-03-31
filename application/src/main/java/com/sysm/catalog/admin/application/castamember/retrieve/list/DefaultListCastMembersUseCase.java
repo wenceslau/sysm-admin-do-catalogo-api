@@ -1,7 +1,7 @@
 package com.sysm.catalog.admin.application.castamember.retrieve.list;
 
 
-import com.sysm.catalog.admin.domain.castmember.CastMemberGateway;
+import com.sysm.catalog.admin.domain.aggregates.castmember.CastMemberGateway;
 import com.sysm.catalog.admin.domain.pagination.Pagination;
 import com.sysm.catalog.admin.domain.pagination.SearchQuery;
 

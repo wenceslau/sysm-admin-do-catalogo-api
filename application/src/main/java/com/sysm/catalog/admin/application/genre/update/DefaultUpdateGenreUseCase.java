@@ -1,14 +1,14 @@
 package com.sysm.catalog.admin.application.genre.update;
 
 import com.sysm.catalog.admin.domain.Identifier;
-import com.sysm.catalog.admin.domain.category.CategoryGateway;
-import com.sysm.catalog.admin.domain.category.CategoryID;
+import com.sysm.catalog.admin.domain.aggregates.category.CategoryGateway;
+import com.sysm.catalog.admin.domain.aggregates.category.CategoryID;
 import com.sysm.catalog.admin.domain.exceptions.DomainException;
 import com.sysm.catalog.admin.domain.exceptions.NotFoundException;
 import com.sysm.catalog.admin.domain.exceptions.NotificationException;
-import com.sysm.catalog.admin.domain.genre.Genre;
-import com.sysm.catalog.admin.domain.genre.GenreGateway;
-import com.sysm.catalog.admin.domain.genre.GenreID;
+import com.sysm.catalog.admin.domain.aggregates.genre.Genre;
+import com.sysm.catalog.admin.domain.aggregates.genre.GenreGateway;
+import com.sysm.catalog.admin.domain.aggregates.genre.GenreID;
 import com.sysm.catalog.admin.domain.validation.ValidationHandler;
 import com.sysm.catalog.admin.domain.validation.handler.Notification;
 

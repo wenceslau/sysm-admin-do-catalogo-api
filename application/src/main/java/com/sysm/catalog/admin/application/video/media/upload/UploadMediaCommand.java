@@ -1,7 +1,7 @@
 package com.sysm.catalog.admin.application.video.media.upload;
 
 
-import com.sysm.catalog.admin.domain.video.VideoResource;
+import com.sysm.catalog.admin.domain.aggregates.video.VideoResource;
 
 public record UploadMediaCommand(
         String videoId,

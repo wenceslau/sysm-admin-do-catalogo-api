@@ -1,10 +1,10 @@
 package com.sysm.catalog.admin.application.genre.create;
 
 import com.sysm.catalog.admin.application.UseCaseTest;
-import com.sysm.catalog.admin.domain.category.CategoryGateway;
-import com.sysm.catalog.admin.domain.category.CategoryID;
+import com.sysm.catalog.admin.domain.aggregates.category.CategoryGateway;
+import com.sysm.catalog.admin.domain.aggregates.category.CategoryID;
 import com.sysm.catalog.admin.domain.exceptions.NotificationException;
-import com.sysm.catalog.admin.domain.genre.GenreGateway;
+import com.sysm.catalog.admin.domain.aggregates.genre.GenreGateway;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

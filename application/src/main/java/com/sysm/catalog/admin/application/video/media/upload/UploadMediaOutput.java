@@ -1,7 +1,7 @@
 package com.sysm.catalog.admin.application.video.media.upload;
 
-import com.sysm.catalog.admin.domain.video.Video;
-import com.sysm.catalog.admin.domain.video.enums.VideoMediaType;
+import com.sysm.catalog.admin.domain.aggregates.video.Video;
+import com.sysm.catalog.admin.domain.aggregates.video.enums.VideoMediaType;
 
 public record UploadMediaOutput(
         String videoId,

@@ -1,5 +1,5 @@
 package com.sysm.catalog.admin.application.video.media.update;
-import com.sysm.catalog.admin.domain.video.enums.MediaStatus;
+import com.sysm.catalog.admin.domain.aggregates.video.enums.MediaStatus;
 
 public record UpdateMediaStatusCommand(
         MediaStatus status,

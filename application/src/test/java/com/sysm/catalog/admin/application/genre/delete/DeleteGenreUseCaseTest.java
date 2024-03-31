@@ -1,9 +1,9 @@
 package com.sysm.catalog.admin.application.genre.delete;
 
 import com.sysm.catalog.admin.application.UseCaseTest;
-import com.sysm.catalog.admin.domain.genre.Genre;
-import com.sysm.catalog.admin.domain.genre.GenreGateway;
-import com.sysm.catalog.admin.domain.genre.GenreID;
+import com.sysm.catalog.admin.domain.aggregates.genre.Genre;
+import com.sysm.catalog.admin.domain.aggregates.genre.GenreGateway;
+import com.sysm.catalog.admin.domain.aggregates.genre.GenreID;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

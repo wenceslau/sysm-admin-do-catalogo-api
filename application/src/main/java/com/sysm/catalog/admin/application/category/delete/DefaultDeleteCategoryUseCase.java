@@ -1,7 +1,7 @@
 package com.sysm.catalog.admin.application.category.delete;
 
-import com.sysm.catalog.admin.domain.category.CategoryGateway;
-import com.sysm.catalog.admin.domain.category.CategoryID;
+import com.sysm.catalog.admin.domain.aggregates.category.CategoryGateway;
+import com.sysm.catalog.admin.domain.aggregates.category.CategoryID;
 
 import java.util.Objects;
 

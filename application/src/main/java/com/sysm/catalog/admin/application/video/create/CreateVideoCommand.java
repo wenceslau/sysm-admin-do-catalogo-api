@@ -1,7 +1,7 @@
 package com.sysm.catalog.admin.application.video.create;
 
 
-import com.sysm.catalog.admin.domain.resource.Resource;
+import com.sysm.catalog.admin.domain.aggregates.resource.Resource;
 
 import java.util.Optional;
 import java.util.Set;

@@ -2,10 +2,10 @@ package com.sysm.catalog.admin.application.video.media.update;
 
 import com.sysm.catalog.admin.application.Fixture;
 import com.sysm.catalog.admin.application.UseCaseTest;
-import com.sysm.catalog.admin.domain.video.Video;
-import com.sysm.catalog.admin.domain.video.VideoGateway;
-import com.sysm.catalog.admin.domain.video.enums.MediaStatus;
-import com.sysm.catalog.admin.domain.video.enums.VideoMediaType;
+import com.sysm.catalog.admin.domain.aggregates.video.Video;
+import com.sysm.catalog.admin.domain.aggregates.video.VideoGateway;
+import com.sysm.catalog.admin.domain.aggregates.video.enums.MediaStatus;
+import com.sysm.catalog.admin.domain.aggregates.video.enums.VideoMediaType;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

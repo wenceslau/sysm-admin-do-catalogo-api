@@ -1,16 +1,16 @@
 package com.sysm.catalog.admin.application;
 
-import com.sysm.catalog.admin.domain.castmember.CastMember;
-import com.sysm.catalog.admin.domain.castmember.CastMemberType;
-import com.sysm.catalog.admin.domain.category.Category;
-import com.sysm.catalog.admin.domain.genre.Genre;
-import com.sysm.catalog.admin.domain.resource.Resource;
+import com.sysm.catalog.admin.domain.aggregates.castmember.CastMember;
+import com.sysm.catalog.admin.domain.aggregates.castmember.CastMemberType;
+import com.sysm.catalog.admin.domain.aggregates.category.Category;
+import com.sysm.catalog.admin.domain.aggregates.genre.Genre;
+import com.sysm.catalog.admin.domain.aggregates.resource.Resource;
 import com.sysm.catalog.admin.domain.utils.IdUtils;
-import com.sysm.catalog.admin.domain.video.AudioVideoMedia;
-import com.sysm.catalog.admin.domain.video.ImageMedia;
-import com.sysm.catalog.admin.domain.video.Video;
-import com.sysm.catalog.admin.domain.video.enums.Rating;
-import com.sysm.catalog.admin.domain.video.enums.VideoMediaType;
+import com.sysm.catalog.admin.domain.aggregates.video.AudioVideoMedia;
+import com.sysm.catalog.admin.domain.aggregates.video.ImageMedia;
+import com.sysm.catalog.admin.domain.aggregates.video.Video;
+import com.sysm.catalog.admin.domain.aggregates.video.enums.Rating;
+import com.sysm.catalog.admin.domain.aggregates.video.enums.VideoMediaType;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.apache.commons.lang3.RandomUtils;
 

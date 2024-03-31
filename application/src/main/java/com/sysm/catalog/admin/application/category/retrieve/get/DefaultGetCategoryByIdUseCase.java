@@ -1,8 +1,8 @@
 package com.sysm.catalog.admin.application.category.retrieve.get;
 
-import com.sysm.catalog.admin.domain.category.Category;
-import com.sysm.catalog.admin.domain.category.CategoryGateway;
-import com.sysm.catalog.admin.domain.category.CategoryID;
+import com.sysm.catalog.admin.domain.aggregates.category.Category;
+import com.sysm.catalog.admin.domain.aggregates.category.CategoryGateway;
+import com.sysm.catalog.admin.domain.aggregates.category.CategoryID;
 import com.sysm.catalog.admin.domain.exceptions.NotFoundException;
 
 import java.util.Objects;

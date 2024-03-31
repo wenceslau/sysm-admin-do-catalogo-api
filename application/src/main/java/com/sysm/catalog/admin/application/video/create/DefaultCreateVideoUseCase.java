@@ -1,19 +1,22 @@
 package com.sysm.catalog.admin.application.video.create;
 
 import com.sysm.catalog.admin.domain.Identifier;
-import com.sysm.catalog.admin.domain.castmember.CastMemberGateway;
-import com.sysm.catalog.admin.domain.castmember.CastMemberID;
-import com.sysm.catalog.admin.domain.category.CategoryGateway;
-import com.sysm.catalog.admin.domain.category.CategoryID;
+import com.sysm.catalog.admin.domain.aggregates.castmember.CastMemberGateway;
+import com.sysm.catalog.admin.domain.aggregates.castmember.CastMemberID;
+import com.sysm.catalog.admin.domain.aggregates.category.CategoryGateway;
+import com.sysm.catalog.admin.domain.aggregates.category.CategoryID;
+import com.sysm.catalog.admin.domain.aggregates.video.MediaResourceGateway;
+import com.sysm.catalog.admin.domain.aggregates.video.Video;
+import com.sysm.catalog.admin.domain.aggregates.video.VideoGateway;
+import com.sysm.catalog.admin.domain.aggregates.video.VideoResource;
 import com.sysm.catalog.admin.domain.exceptions.InternalErrorException;
 import com.sysm.catalog.admin.domain.exceptions.NotificationException;
-import com.sysm.catalog.admin.domain.genre.GenreGateway;
-import com.sysm.catalog.admin.domain.genre.GenreID;
+import com.sysm.catalog.admin.domain.aggregates.genre.GenreGateway;
+import com.sysm.catalog.admin.domain.aggregates.genre.GenreID;
 import com.sysm.catalog.admin.domain.validation.ValidationHandler;
 import com.sysm.catalog.admin.domain.validation.handler.Notification;
-import com.sysm.catalog.admin.domain.video.*;
-import com.sysm.catalog.admin.domain.video.enums.Rating;
-import com.sysm.catalog.admin.domain.video.enums.VideoMediaType;
+import com.sysm.catalog.admin.domain.aggregates.video.enums.Rating;
+import com.sysm.catalog.admin.domain.aggregates.video.enums.VideoMediaType;
 
 import java.time.Year;
 import java.util.ArrayList;

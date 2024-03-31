@@ -1,8 +1,8 @@
 package com.sysm.catalog.admin.application.genre.retrieve.list;
 
 import com.sysm.catalog.admin.application.UseCaseTest;
-import com.sysm.catalog.admin.domain.genre.Genre;
-import com.sysm.catalog.admin.domain.genre.GenreGateway;
+import com.sysm.catalog.admin.domain.aggregates.genre.Genre;
+import com.sysm.catalog.admin.domain.aggregates.genre.GenreGateway;
 import com.sysm.catalog.admin.domain.pagination.Pagination;
 import com.sysm.catalog.admin.domain.pagination.SearchQuery;
 import org.junit.jupiter.api.Assertions;

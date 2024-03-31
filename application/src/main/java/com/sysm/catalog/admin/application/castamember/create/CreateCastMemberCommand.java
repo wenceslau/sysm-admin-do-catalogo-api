@@ -1,6 +1,6 @@
 package com.sysm.catalog.admin.application.castamember.create;
 
-import com.sysm.catalog.admin.domain.castmember.CastMemberType;
+import com.sysm.catalog.admin.domain.aggregates.castmember.CastMemberType;
 
 public record CreateCastMemberCommand(
         String name,

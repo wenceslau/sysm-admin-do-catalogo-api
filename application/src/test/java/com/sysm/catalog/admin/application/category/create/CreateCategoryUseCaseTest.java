@@ -1,7 +1,7 @@
 package com.sysm.catalog.admin.application.category.create;
 
 import com.sysm.catalog.admin.application.UseCaseTest;
-import com.sysm.catalog.admin.domain.category.CategoryGateway;
+import com.sysm.catalog.admin.domain.aggregates.category.CategoryGateway;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

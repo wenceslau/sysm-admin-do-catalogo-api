@@ -1,6 +1,6 @@
 package com.sysm.catalog.admin.application.category.update;
 
-import com.sysm.catalog.admin.domain.category.Category;
+import com.sysm.catalog.admin.domain.aggregates.category.Category;
 
 public record UpdateCategoryOutput(
     String id

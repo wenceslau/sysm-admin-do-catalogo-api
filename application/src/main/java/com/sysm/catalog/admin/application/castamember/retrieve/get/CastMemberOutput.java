@@ -1,7 +1,7 @@
 package com.sysm.catalog.admin.application.castamember.retrieve.get;
 
-import com.sysm.catalog.admin.domain.castmember.CastMember;
-import com.sysm.catalog.admin.domain.castmember.CastMemberType;
+import com.sysm.catalog.admin.domain.aggregates.castmember.CastMember;
+import com.sysm.catalog.admin.domain.aggregates.castmember.CastMemberType;
 
 import java.time.Instant;
 

@@ -1,7 +1,7 @@
 package com.sysm.catalog.admin.application.castamember.update;
 
 
-import com.sysm.catalog.admin.domain.castmember.CastMember;
+import com.sysm.catalog.admin.domain.aggregates.castmember.CastMember;
 
 public record UpdateCastMemberOutput(String id) {
 

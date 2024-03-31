@@ -1,6 +1,6 @@
 package com.sysm.catalog.admin.application.genre.create;
 
-import com.sysm.catalog.admin.domain.genre.Genre;
+import com.sysm.catalog.admin.domain.aggregates.genre.Genre;
 
 public record CreateGenreOutput(
         String id

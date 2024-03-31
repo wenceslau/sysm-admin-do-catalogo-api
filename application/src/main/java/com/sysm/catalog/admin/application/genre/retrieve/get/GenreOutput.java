@@ -1,7 +1,7 @@
 package com.sysm.catalog.admin.application.genre.retrieve.get;
 
-import com.sysm.catalog.admin.domain.category.CategoryID;
-import com.sysm.catalog.admin.domain.genre.Genre;
+import com.sysm.catalog.admin.domain.aggregates.category.CategoryID;
+import com.sysm.catalog.admin.domain.aggregates.genre.Genre;
 
 import java.time.Instant;
 import java.util.List;

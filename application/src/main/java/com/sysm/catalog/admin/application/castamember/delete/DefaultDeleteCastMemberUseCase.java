@@ -1,7 +1,7 @@
 package com.sysm.catalog.admin.application.castamember.delete;
 
-import com.sysm.catalog.admin.domain.castmember.CastMemberGateway;
-import com.sysm.catalog.admin.domain.castmember.CastMemberID;
+import com.sysm.catalog.admin.domain.aggregates.castmember.CastMemberGateway;
+import com.sysm.catalog.admin.domain.aggregates.castmember.CastMemberID;
 
 import java.util.Objects;
 

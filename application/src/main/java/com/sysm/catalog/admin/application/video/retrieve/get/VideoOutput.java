@@ -2,10 +2,10 @@ package com.sysm.catalog.admin.application.video.retrieve.get;
 
 import com.sysm.catalog.admin.domain.Identifier;
 import com.sysm.catalog.admin.domain.utils.CollectionUtils;
-import com.sysm.catalog.admin.domain.video.AudioVideoMedia;
-import com.sysm.catalog.admin.domain.video.ImageMedia;
-import com.sysm.catalog.admin.domain.video.Video;
-import com.sysm.catalog.admin.domain.video.enums.Rating;
+import com.sysm.catalog.admin.domain.aggregates.video.AudioVideoMedia;
+import com.sysm.catalog.admin.domain.aggregates.video.ImageMedia;
+import com.sysm.catalog.admin.domain.aggregates.video.Video;
+import com.sysm.catalog.admin.domain.aggregates.video.enums.Rating;
 
 import java.time.Instant;
 import java.util.Set;
