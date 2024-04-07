@@ -9,6 +9,8 @@ import com.sysm.catalog.admin.domain.aggregates.video.records.VideoSearchQuery;
 import com.sysm.catalog.admin.domain.pagination.Pagination;
 import com.sysm.catalog.admin.infrastructure.aggregates.video.persistence.VideoJpaEntity;
 import com.sysm.catalog.admin.infrastructure.aggregates.video.persistence.VideoRepository;
+import com.sysm.catalog.admin.infrastructure.configuration.EventService;
+import com.sysm.catalog.admin.infrastructure.configuration.annotations.VideoCreatedQueue;
 import com.sysm.catalog.admin.infrastructure.utils.SqlUtils;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
@@ -24,11 +26,16 @@ import static com.sysm.catalog.admin.domain.utils.CollectionUtils.nullIfEmpty;
 @Component
 public class DefaultVideoGateway implements VideoGateway {
 
+    private final EventService eventService;
     private final VideoRepository videoRepository;
 
-    public DefaultVideoGateway(final VideoRepository videoRepository) {
+    public DefaultVideoGateway(
+            @VideoCreatedQueue EventService eventService,
+            final VideoRepository videoRepository) {
+        this.eventService = eventService;
         this.videoRepository = Objects.requireNonNull(videoRepository);
     }
+
 
     @Override
     @Transactional
@@ -82,7 +89,11 @@ public class DefaultVideoGateway implements VideoGateway {
     }
 
     private Video save(final Video aVideo) {
-        return this.videoRepository.save(VideoJpaEntity.from(aVideo))
+        final var result = this.videoRepository.save(VideoJpaEntity.from(aVideo))
                 .toAggregate();
+
+        aVideo.publishDomainEvents(this.eventService::send);
+
+        return result;
     }
 }

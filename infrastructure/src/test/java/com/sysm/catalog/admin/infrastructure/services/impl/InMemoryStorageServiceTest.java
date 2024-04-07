@@ -1,8 +1,7 @@
-package com.sysm.catalog.admin.infrastructure.services.local;
+package com.sysm.catalog.admin.infrastructure.services.impl;
 
 import com.sysm.catalog.admin.application.Fixture;
 import com.sysm.catalog.admin.domain.aggregates.video.enums.VideoMediaType;
-import com.sysm.catalog.admin.infrastructure.services.impl.InMemoryStorageService;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

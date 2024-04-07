@@ -1,6 +1,6 @@
 amqp:
   host: localhost
-  port: 5672
+  port: 5673
   username: adm_videos
   password: 123456
 

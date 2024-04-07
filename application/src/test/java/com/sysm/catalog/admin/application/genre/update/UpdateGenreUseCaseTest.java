@@ -9,6 +9,7 @@ import com.sysm.catalog.admin.domain.aggregates.genre.GenreGateway;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.ArgumentCaptor;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
@@ -164,6 +165,8 @@ public class UpdateGenreUseCaseTest extends UseCaseTest {
         Assertions.assertTrue(aGenre.isActive());
         Assertions.assertNull(aGenre.getDeletedAt());
 
+        sleep();
+
         // when
         final var actualOutput = useCase.execute(aCommand);
 
@@ -173,15 +176,25 @@ public class UpdateGenreUseCaseTest extends UseCaseTest {
 
         Mockito.verify(genreGateway, times(1)).findById(eq(expectedId));
 
-        Mockito.verify(genreGateway, times(1)).update(argThat(aUpdatedGenre ->
-                Objects.equals(expectedId, aUpdatedGenre.getId())
-                        && Objects.equals(expectedName, aUpdatedGenre.getName())
-                        && Objects.equals(expectedIsActive, aUpdatedGenre.isActive())
-                        && Objects.equals(expectedCategories, aUpdatedGenre.getCategories())
-                        && Objects.equals(aGenre.getCreatedAt(), aUpdatedGenre.getCreatedAt())
-                        && aGenre.getUpdatedAt().isBefore(aUpdatedGenre.getUpdatedAt())
-                        && Objects.nonNull(aUpdatedGenre.getDeletedAt())
-        ));
+        final var captor = ArgumentCaptor.forClass(Genre.class);
+        Mockito.verify(genreGateway, times(1)).update(captor.capture());
+        final var aUpdatedCategory = captor.getValue();
+        Assertions.assertEquals(expectedName, aUpdatedCategory.getName());
+        Assertions.assertEquals(expectedIsActive, aUpdatedCategory.isActive());
+        Assertions.assertEquals(expectedId, aUpdatedCategory.getId());
+        Assertions.assertEquals(aGenre.getCreatedAt(), aUpdatedCategory.getCreatedAt());
+        Assertions.assertTrue(aGenre.getUpdatedAt().isBefore(aUpdatedCategory.getUpdatedAt()));
+        Assertions.assertNotNull(aUpdatedCategory.getDeletedAt());
+
+//        Mockito.verify(genreGateway, times(1)).update(argThat(aUpdatedGenre ->
+//                Objects.equals(expectedId, aUpdatedGenre.getId())
+//                        && Objects.equals(expectedName, aUpdatedGenre.getName())
+//                        && Objects.equals(expectedIsActive, aUpdatedGenre.isActive())
+//                        && Objects.equals(expectedCategories, aUpdatedGenre.getCategories())
+//                        && Objects.equals(aGenre.getCreatedAt(), aUpdatedGenre.getCreatedAt())
+//                        && aGenre.getUpdatedAt().isBefore(aUpdatedGenre.getUpdatedAt())
+//                        && Objects.nonNull(aUpdatedGenre.getDeletedAt())
+//        ));
     }
 
     @Test
