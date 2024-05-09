@@ -1,14 +1,12 @@
 package com.sysm.catalog.admin.infrastructure;
 
 import com.sysm.catalog.admin.domain.aggregates.category.Category;
-import com.sysm.catalog.admin.domain.aggregates.genre.Genre;
 import com.sysm.catalog.admin.infrastructure.aggregates.castmember.persistence.CastMemberRepository;
 import com.sysm.catalog.admin.infrastructure.aggregates.category.persistence.CategoryJpaEntity;
 import com.sysm.catalog.admin.infrastructure.aggregates.category.persistence.CategoryRepository;
 import com.sysm.catalog.admin.infrastructure.aggregates.genre.persistence.GenreRepository;
 import com.sysm.catalog.admin.infrastructure.aggregates.video.persistence.VideoRepository;
 import com.sysm.catalog.admin.infrastructure.configuration.WebServerConfig;
-import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -25,10 +23,10 @@ public class Main {
         SpringApplication.run(WebServerConfig.class, args);
     }
 
-    @RabbitListener(queues = "video.encoded.queue")
-    void dummy() {
-
-    }
+//    @RabbitListener(queues = "video.encoded.queue")
+//    void dummy() {
+//
+//    }
 
     @Bean
     @Profile("development")

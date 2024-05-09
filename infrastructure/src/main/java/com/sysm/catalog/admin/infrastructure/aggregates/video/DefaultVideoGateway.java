@@ -92,6 +92,18 @@ public class DefaultVideoGateway implements VideoGateway {
         final var result = this.videoRepository.save(VideoJpaEntity.from(aVideo))
                 .toAggregate();
 
+        // Publish domain events,
+        // this is a good practice to keep the domain events in the same transaction
+        // As the aggregate, so if the transaction fails, the events are not published
+        // The method receive a DomainEventPublisher, that is a functional interface
+        // The DomainEventPublisher has a method called publish, that receives a DomainEvent
+        // The method send has the same signature as the method publish from the DomainEventPublisher
+        // this means that the method send can be used as a method reference inside the method publishDomainEvents
+        // Inside the method publishDomainEvents, the method publish is called for each event
+        // In this cause the DomainEventPublisher is the EventService
+        // (this is possible because the EventService has a method called send with the same signature as the method publish from the DomainEventPublisher)
+        // And when the method publish is called, the method send from the EventService is called
+        // Because they have the same signature
         aVideo.publishDomainEvents(this.eventService::send);
 
         return result;

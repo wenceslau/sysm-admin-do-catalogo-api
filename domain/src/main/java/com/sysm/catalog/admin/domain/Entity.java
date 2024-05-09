@@ -36,7 +36,10 @@ public abstract class Entity<ID extends Identifier> {
         if (publisher == null){
             return;
         }
-        getDomainEvents().forEach(publisher::publish);
+        for (DomainEvent domainEvent : getDomainEvents()) {
+            publisher.publish(domainEvent);
+        }
+        //getDomainEvents().forEach(publisher::publish);
         this.domainEvents.clear();
     }
 
