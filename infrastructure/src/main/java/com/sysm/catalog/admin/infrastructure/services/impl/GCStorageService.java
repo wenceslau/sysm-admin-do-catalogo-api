@@ -37,8 +37,8 @@ public class GCStorageService implements StorageService {
 
         return Optional.ofNullable(blob)
                 .map(resource -> Resource.with(
-                        blob.getCrc32cToHexString(),
                         blob.getContent(),
+                        blob.getCrc32cToHexString(),
                         blob.getContentType(),
                         name));
     }

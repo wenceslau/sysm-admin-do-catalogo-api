@@ -6,20 +6,20 @@ import java.util.Objects;
 
 public class Resource extends ValueObject {
 
-    private final String checksum;
     private final byte[] content;
+    private final String checksum;
     private final String contentType;
     private final String name;
 
-    private Resource(final String checksum, final byte[] content, final String contentType, final String name) {
-        this.checksum = Objects.requireNonNull(checksum);
+    private Resource( final byte[] content, final String checksum, final String contentType, final String name) {
         this.content = Objects.requireNonNull(content);
+        this.checksum = Objects.requireNonNull(checksum);
         this.contentType = Objects.requireNonNull(contentType);
         this.name = Objects.requireNonNull(name);
     }
 
-    public static Resource with(final String checkSum, final byte[] content, final String contentType, final String name) {
-        return new Resource(checkSum, content, contentType, name);
+    public static Resource with(final byte[] content, final String checkSum, final String contentType, final String name) {
+        return new Resource(content, checkSum, contentType, name);
     }
 
     public String checksum() {
