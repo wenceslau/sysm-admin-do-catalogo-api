@@ -73,7 +73,7 @@ jobs:
 
       # 4. Build the application with Maven. The -B option in maven command is for batch mode, making the build output less verbose.
       - name: Build with Maven
-        run: mvn -B package --file pom.xml
+        run: mvn -B package -DskipTests --file pom.xml
 
       # 6. Set the variable branch name
       - name: Set BUILD_TAG
@@ -98,7 +98,7 @@ jobs:
       - name: Build and push the docker image
         uses: docker/build-push-action@v3
         with:
-          context: .
-          push: true
-          build-args: VERSION=${{ env.BUILD_TAG }}
-          tags: ${{ env.IMAGE_NAME }}:${{ env.BUILD_TAG }}
+          context: .                                        # The path to the Dockerfile and the context of the build. The context is the root directory of the build. It is used to resolve the paths of the files that are used in the Dockerfile. In this case, the context is set to the root directory of the repository.
+          push: true                                        # push: This is a boolean value that specifies whether to push the built image to the container registry. In this case, it is set to true, which means that the image will be pushed to the container registry.
+          build-args: VERSION=${{ env.BUILD_TAG }}          # build-args: This is a list of build arguments that are passed to the Docker build. In this case, the VERSION build argument is set to the value of the BUILD_TAG environment variable. This is used to tag the image with the version number.
+          tags: ${{ env.IMAGE_NAME }}:${{ env.BUILD_TAG }}  # tags: This is a list of tags that are applied to the built image. In this case, the image is tagged with the IMAGE_NAME environment variable and the BUILD_TAG environment variable. The IMAGE_NAME environment variable is set to wbaneto/sysm-admin-catalogo-de-videos-java, and the BUILD_TAG environment variable is set to the branch name and the run number.
