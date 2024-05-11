@@ -1,20 +1,28 @@
+database:
+  url: jdbc:h2:mem://sysm_adm_videos:MODE=MYSQL;DATABASE_TO_LOWER=TRUE
+  username: root
+  password: 123456
+
 amqp:
-  admin:
-    auto-create: true
+  admin_auto-create: true
   host: localhost
   port: 5672
   username: adm_videos
   password: 123456
 
 spring:
-  spring:
-    autoconfigure:
-      exclude:
-        - org.springframework.boot.autoconfigure.amqp.RabbitAutoConfiguration
-  datasource:   # This configuration use H2 in a memory database to run the integration tests
-    url: jdbc:h2:mem://adm_videos_test_integration:MODE=MYSQL;DATABASE_TO_LOWER=TRUE
-    username: root
-    password: 123456
+  server_port: 8084
+  undertow_threads_worker: 32
+  undertow_threads_io: 2
+  flyway_enable: true
+  jpa_show_sql: false
+  jpa_hibernate_ddl_auto: none
+
+  #Spring variables changed only for this profile
+  autoconfigure:
+    exclude:
+      - org.springframework.boot.autoconfigure.amqp.RabbitAutoConfiguration
+  datasource:
     driver-class-name: org.h2.Driver
   jpa:
     defer-datasource-initialization: false

@@ -1,5 +1,6 @@
 package com.sysm.catalog.admin.infrastructure;
 
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.context.annotation.ComponentScan;
@@ -14,7 +15,7 @@ import java.lang.annotation.Target;
 @Target(ElementType.TYPE)
 @Retention(java.lang.annotation.RetentionPolicy.RUNTIME)
 @Inherited
-@ActiveProfiles("test")
+@ActiveProfiles("test-integration")
 @ComponentScan(
         basePackages = "com.sysm.catalog.admin",
         includeFilters = {
@@ -22,5 +23,6 @@ import java.lang.annotation.Target;
 })
 @DataJpaTest
 @ExtendWith(MySQLCleanUpExtension.class)
+@Tag("integration")
 public @interface MySQLGatewayTest {
 }

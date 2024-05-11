@@ -1,11 +1,10 @@
 package com.sysm.catalog.admin.domain.aggregates.video;
 
-
-import com.sysm.catalog.admin.domain.aggregates.video.ImageMedia;
+import com.sysm.catalog.admin.domain.aggregates.UnitTest;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-public class ImageMediaTest {
+public class ImageMediaTest extends UnitTest {
 
     @Test
     public void givenValidParams_whenCallsNewImage_ShouldReturnInstance() {

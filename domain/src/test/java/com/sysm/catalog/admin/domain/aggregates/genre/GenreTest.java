@@ -1,7 +1,7 @@
 package com.sysm.catalog.admin.domain.aggregates.genre;
 
+import com.sysm.catalog.admin.domain.aggregates.UnitTest;
 import com.sysm.catalog.admin.domain.aggregates.category.CategoryID;
-import com.sysm.catalog.admin.domain.aggregates.genre.Genre;
 import com.sysm.catalog.admin.domain.exceptions.NotificationException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GenreTest {
+public class GenreTest extends UnitTest {
 
     @Test
     public void givenValidParams_whenCallNewGenre_shouldInstantiateAGenre() {

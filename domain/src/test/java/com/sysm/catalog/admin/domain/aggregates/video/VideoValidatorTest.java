@@ -1,8 +1,8 @@
 package com.sysm.catalog.admin.domain.aggregates.video;
 
+import com.sysm.catalog.admin.domain.aggregates.UnitTest;
 import com.sysm.catalog.admin.domain.aggregates.castmember.CastMemberID;
 import com.sysm.catalog.admin.domain.aggregates.category.CategoryID;
-import com.sysm.catalog.admin.domain.aggregates.video.Video;
 import com.sysm.catalog.admin.domain.exceptions.DomainException;
 import com.sysm.catalog.admin.domain.aggregates.genre.GenreID;
 import com.sysm.catalog.admin.domain.validation.handler.ThrowsValidationHandler;
@@ -13,7 +13,7 @@ import org.junit.jupiter.api.Test;
 import java.time.Year;
 import java.util.Set;
 
-public class VideoValidatorTest {
+public class VideoValidatorTest extends UnitTest {
 
     @Test
     public void givenNullTitle_whenCallsValidate_shouldReceiveError() {

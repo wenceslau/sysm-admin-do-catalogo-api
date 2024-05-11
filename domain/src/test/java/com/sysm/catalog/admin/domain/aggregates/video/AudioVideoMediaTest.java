@@ -1,6 +1,6 @@
 package com.sysm.catalog.admin.domain.aggregates.video;
 
-import com.sysm.catalog.admin.domain.aggregates.video.AudioVideoMedia;
+import com.sysm.catalog.admin.domain.aggregates.UnitTest;
 import com.sysm.catalog.admin.domain.utils.IdUtils;
 import com.sysm.catalog.admin.domain.aggregates.video.enums.MediaStatus;
 import org.junit.jupiter.api.Assertions;
@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-class AudioVideoMediaTest {
+class AudioVideoMediaTest extends UnitTest {
 
     @Test
     public void givenValidParams_whenCallsNewAudioVideo_ShouldReturnInstance() {

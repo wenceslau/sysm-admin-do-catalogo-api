@@ -1,6 +1,6 @@
 amqp:
   admin:
-    auto-create: false
+    auto-create: ${amqp.admin_auto-create}
   queues:
     video-created:
       exchange: video.events
@@ -10,7 +10,6 @@ amqp:
       exchange: video.events
       routing-key: video.encoded
       queue: video.encoded.queue # unncesessary
-
 
 google:
   cloud:
@@ -27,21 +26,23 @@ google:
         retry-multiplier: 1.0
 
 server:
-  port: 8080
+  port: ${spring.server_port}
   compression:
-    enabled: true             # Whether response compression is enabled.
+    enabled: true                                           # Whether response compression is enabled.
     mime-types: text/html,text/xml,text/plain,text/css,text/javascript,application/javascript,application/json # Comma-separated list of MIME types that should be compressed.
-    min-response-size: 1024   # Minimum "Content-Length" value that is required for compression to be performed.
+    min-response-size: 1024                                 # Minimum "Content-Length" value that is required for compression to be performed.
   undertow:
     threads:
-      worker: 64              # Generally this should be reasonably high, at least 10 per CPU core: https://undertow.io/undertow-docs/undertow-docs-2.1.0/index.html#listeners-2
-      io: 4                   # One IO thread per CPU core is a reasonable default: https://undertow.io/undertow-docs/undertow-docs-2.1.0/index.html#listeners-2
+      worker: ${spring.undertow_threads_worker}             # Generally this should be reasonably high, at least 10 per CPU core: https://undertow.io/undertow-docs/undertow-docs-2.1.0/index.html#listeners-2
+      io: ${spring.undertow_threads_io}                     # One IO thread per CPU core is a reasonable default: https://undertow.io/undertow-docs/undertow-docs-2.1.0/index.html#listeners-2
 
 spring:
+  flyway:
+    enabled: ${spring.flyway_enable}
   datasource:
-    url: ${mysql.url}
-    username: ${mysql.username}
-    password: ${mysql.password}
+    url: ${database.url}
+    username: ${database.username}
+    password: ${database.password}
     hikari:                   # responsavel por gerenciar o pool
       auto-commit: false
       connection-timeout: 250 # É uma configuração em milliseconds. O ideal é manter baixo para que estoure timeout logo e não prenda as threads.
@@ -51,9 +52,9 @@ spring:
       pool-name: master
   jpa:
     open-in-view: false
-    show-sql: true
+    show-sql: ${spring.jpa_show_sql}
     hibernate:
-      ddl-auto: none
+      ddl-auto: ${spring.jpa_hibernate_ddl_auto}
     properties:
       "[hibernate.dialect]": org.hibernate.dialect.MySQL8Dialect
       "[hibernate.generate_statistics]": false

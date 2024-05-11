@@ -1,12 +1,12 @@
 package com.sysm.catalog.admin.domain.aggregates.category;
 
-import com.sysm.catalog.admin.domain.aggregates.category.Category;
+import com.sysm.catalog.admin.domain.aggregates.UnitTest;
 import com.sysm.catalog.admin.domain.exceptions.DomainException;
 import com.sysm.catalog.admin.domain.validation.handler.ThrowsValidationHandler;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-class CategoryTest {
+class CategoryTest extends UnitTest {
 
     @Test
     public void givenAValidParams_whenCallNewCategory_thenInstantiateACatergory(){

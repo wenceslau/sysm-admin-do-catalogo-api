@@ -1,19 +1,19 @@
+database:
+  url: jdbc:mysql://localhost:3306/sysm_adm_videos_dev?useSSL=true&serverTimezone=UTC&characterEncoding=UTF-8&createDatabaseIfNotExist=true
+  username: root
+  password: 123456
+
 amqp:
-  admin:
-    auto-create: true
+  admin_auto-create: true
   host: localhost
   port: 5672
   username: adm_videos
   password: 123456
 
-mysql:
-  url: jdbc:mysql://localhost:3306/adm_videos_dev?useSSL=true&serverTimezone=UTC&characterEncoding=UTF-8&createDatabaseIfNotExist=true
-  username: root
-  password: 123456
-
-server:
-  port: 8080
-  undertow:
-    threads:
-      worker: 32
-      io: 2
+spring:
+  server_port: 8084
+  undertow_threads_worker: 32
+  undertow_threads_io: 2
+  flyway_enable: true
+  jpa_show_sql: true
+  jpa_hibernate_ddl_auto: none

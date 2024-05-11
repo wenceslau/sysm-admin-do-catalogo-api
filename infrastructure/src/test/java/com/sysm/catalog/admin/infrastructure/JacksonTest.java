@@ -1,6 +1,7 @@
 package com.sysm.catalog.admin.infrastructure;
 
 import com.sysm.catalog.admin.infrastructure.configuration.ObjectMapperConfig;
+import org.junit.jupiter.api.Tag;
 import org.springframework.boot.test.autoconfigure.json.JsonTest;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.FilterType;
@@ -16,5 +17,6 @@ import java.lang.annotation.Target;
     @ComponentScan.Filter(type = FilterType.ASSIGNABLE_TYPE, classes = ObjectMapperConfig.class
     )
 )
+@Tag("integration")
 public @interface JacksonTest {
 }

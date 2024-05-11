@@ -16,6 +16,6 @@ import java.lang.annotation.*;
 @SpringBootTest(classes = WebServerConfig.class)
 @ExtendWith(MySQLCleanUpExtension.class)
 @AutoConfigureMockMvc
-@Tag("e2eTest")
+@Tag("e2e")
 public @interface E2ETest {
 }

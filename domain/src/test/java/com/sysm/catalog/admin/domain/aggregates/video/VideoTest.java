@@ -1,12 +1,11 @@
 package com.sysm.catalog.admin.domain.aggregates.video;
 
+import com.sysm.catalog.admin.domain.aggregates.UnitTest;
 import com.sysm.catalog.admin.domain.aggregates.castmember.CastMemberID;
 import com.sysm.catalog.admin.domain.aggregates.category.CategoryID;
 import com.sysm.catalog.admin.domain.aggregates.genre.GenreID;
-import com.sysm.catalog.admin.domain.aggregates.video.enums.MediaStatus;
 import com.sysm.catalog.admin.domain.aggregates.video.enums.Rating;
 import com.sysm.catalog.admin.domain.aggregates.video.records.VideoMediaCreated;
-import com.sysm.catalog.admin.domain.utils.IdUtils;
 import com.sysm.catalog.admin.domain.utils.InstantUtils;
 import com.sysm.catalog.admin.domain.validation.handler.ThrowsValidationHandler;
 import org.junit.jupiter.api.Assertions;
@@ -17,7 +16,7 @@ import java.util.Set;
 
 import static java.lang.Thread.sleep;
 
-public class VideoTest {
+public class VideoTest extends UnitTest {
 
     @Test
     public void givenValidParams_whenCallsNewVideo_shouldInstantiate() {

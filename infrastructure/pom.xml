@@ -140,6 +140,8 @@
     </dependencies>
 
     <build>
+        <directory>${project.basedir}/build</directory>
+        <finalName>application</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>

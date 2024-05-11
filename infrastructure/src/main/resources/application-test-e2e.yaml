@@ -1,15 +1,24 @@
+database:
+  url: jdbc:mysql://localhost:${mysql.port}/sysm_adm_videos?useSSL=true&serverTimezone=UTC&characterEncoding=UTF-8&createDatabaseIfNotExist=true
+  username: root
+  password: 123456
+
 amqp:
+  admin_auto-create: true
   host: localhost
   port: 5673
   username: adm_videos
   password: 123456
 
-mysql:
-  url: jdbc:mysql://localhost:${mysql.port}/adm_videos_test_e2e?useSSL=true&serverTimezone=UTC&characterEncoding=UTF-8&createDatabaseIfNotExist=true
-  username: root
-  password: 123456
-
 spring:
+  server_port: 8084
+  undertow_threads_worker: 32
+  undertow_threads_io: 2
+  flyway_enable: true
+  jpa_show_sql: false
+  jpa_hibernate_ddl_auto: none
+
+  #Spring variables changed only for this profile
   autoconfigure:
     exclude:
       - org.springframework.boot.autoconfigure.amqp.RabbitAutoConfiguration
