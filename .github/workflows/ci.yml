@@ -1,0 +1,33 @@
+name: CI Pipeline
+
+# Pipeline trigger
+# The pipeline will run whenever there is a push to the main or master branches
+on:
+  push:
+    branches:
+      - main
+      - master
+  # Enable manual trigger through the GitHub Actions interface
+  workflow_dispatch:
+
+jobs:
+  # Test execution job
+  tests:
+    name: Tests runner
+    runs-on: ubuntu-latest
+    # Steps configuration of our job
+    steps:
+      # 1. Check-out of the source code
+      - uses: actions/checkout@v3
+      # 2. Configure the JDK on the machine
+      - name: Set up JDK@17
+        uses: actions/setup-java@v3
+        with:
+          java-version: '17'
+          distribution: 'adopt'
+      # 3. Check if Maven is installed
+      - name: Run the Maven verify phase
+        run: mvn --batch-mode --update-snapshots verify
+      # 4. Run the application tests
+      - name: Run application tests
+        run: ./mvn test
