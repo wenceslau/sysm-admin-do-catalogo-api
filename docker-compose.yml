@@ -2,7 +2,7 @@ version: '3.7'
 
 services:
   app:
-    container_name: adm_videos_app
+    container_name: adm_videos_app_sysm
     #build: .
     image: wbaneto/sysm-admin-catalogo-de-videos-java:master-1
     profiles: [ "app" ]
@@ -10,16 +10,16 @@ services:
     env_file:
       - .env
     ports:
-      - 8080:8080
+      - 8084:8084
     depends_on:
       - mysql
       - rabbitmq
     networks:
-      - adm_videos_network
+      - adm_videos_network_sysm
 
 
   mysql:
-    container_name: adm_videos_mysql
+    container_name: adm_videos_mysql_sysm
     image: mysql:latest
 #    profiles: [ "infra" ]
     environment:
@@ -28,13 +28,15 @@ services:
     security_opt:
       - seccomp:unconfined
     ports:
-      - 3306:3306
+      - 3307:3306
     networks:
-      - adm_videos_network
+      - adm_videos_network_sysm
+    volumes:
+      - ./data/mysql:/var/lib/mysql
 
 
   rabbitmq:
-    container_name: adm_videos_rabbitmq
+    container_name: adm_videos_rabbitmq_sysm
     image: rabbitmq:3-management
 #    profiles: [ "infra" ]
     environment:
@@ -43,13 +45,29 @@ services:
         - RABBITMQ_DEFAULT_PASS=123456
         - RABBITMQ_DEFAULT_VHOST=/
     ports:
-        - 5672:5672
-        - 15672:15672
+        - 5673:5672
+        - 15673:15672
     networks:
-      - adm_videos_network
+      - adm_videos_network_sysm
+
+
+  keycloak:
+    container_name: adm_videos_keycloak_sysm
+    image: quay.io/keycloak/keycloak:20.0.3
+    environment:
+      - KEYCLOAK_ADMIN=admin
+      - KEYCLOAK_ADMIN_PASSWORD=admin
+    ports:
+      - 8444:8080
+    command:
+      - start-dev
+    networks:
+      - adm_videos_network_sysm
+    volumes:
+      - ./data/keycloak:/opt/keycloak/data/h2
 
 networks:
-  adm_videos_network:
+  adm_videos_network_sysm:
 
 
 # docker compose up -d

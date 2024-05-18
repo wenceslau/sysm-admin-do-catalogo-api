@@ -2,6 +2,7 @@ package com.sysm.catalog.admin.infrastructure.e2e.genre;
 
 import com.sysm.catalog.admin.domain.aggregates.category.CategoryID;
 import com.sysm.catalog.admin.domain.aggregates.genre.GenreID;
+import com.sysm.catalog.admin.infrastructure.ApiTest;
 import com.sysm.catalog.admin.infrastructure.E2ETest;
 import com.sysm.catalog.admin.infrastructure.aggregates.genre.models.UpdateGenreRequest;
 import com.sysm.catalog.admin.infrastructure.aggregates.genre.persistence.GenreRepository;
@@ -213,7 +214,7 @@ public class GenresE2ETest extends ContainerTest implements MockDsl {
         Assertions.assertEquals(0, genreRepository.count());
 
         final var aRequest = get("/genres/123")
-               // .with(ApiTest.ADMIN_JWT)
+                .with(ApiTest.ADMIN_JWT)
                 .accept(MediaType.APPLICATION_JSON)
                 .contentType(MediaType.APPLICATION_JSON);
 

@@ -1,5 +1,6 @@
 package com.sysm.catalog.admin.infrastructure.e2e.category;
 
+import com.sysm.catalog.admin.infrastructure.ApiTest;
 import com.sysm.catalog.admin.infrastructure.E2ETest;
 import com.sysm.catalog.admin.infrastructure.e2e.ContainerTest;
 import com.sysm.catalog.admin.infrastructure.e2e.MockDsl;
@@ -177,6 +178,7 @@ public class CategoryE2ETest extends ContainerTest implements MockDsl {
         Assertions.assertEquals(0, categoryRepository.count());
 
         final var aRequest = get("/categories/123")
+                .with(ApiTest.ADMIN_JWT)
                 .accept(MediaType.APPLICATION_JSON)
                 .contentType(MediaType.APPLICATION_JSON);
 

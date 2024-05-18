@@ -1,17 +1,21 @@
 database:
-  url: ${DATABASE_MYSQL_URL:jdbc:mysql://localhost:3306/sysm_adm_videos_prd?useSSL=true&serverTimezone=UTC&characterEncoding=UTF-8&createDatabaseIfNotExist=true}
+  url: ${DATABASE_MYSQL_URL:jdbc:mysql://localhost:3307/sysm_adm_videos_prd?useSSL=true&serverTimezone=UTC&characterEncoding=UTF-8&createDatabaseIfNotExist=true}
   username: ${DATABASE_MYSQL_USERNAME:root}
   password: ${DATABASE_MYSQL_PASSWORD:123456}
 
 amqp:
   admin_auto-create: ${AMQP_ADMIN_AUTO_CREATE:true}
   host: ${AMQP_RABBIT_HOST:localhost}
-  port: ${AMQP_RABBIT_PORT:5672}
+  port: ${AMQP_RABBIT_PORT:5673}
   username: ${AMQP_RABBIT_USERNAME:adm_videos}
   password: ${AMQP_RABBIT_PASSWORD:123456}
 
+keycloak:
+  realm: ${KEYCLOAK_REALM:sysm-codeflix}
+  host: ${KEYCLOAK_HOST:http://localhost:8444}
+
 spring:
-  server_port: 8080
+  server_port: 8084
   undertow_threads_worker: 64
   undertow_threads_io: 4
   flyway_enable: true

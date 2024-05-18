@@ -71,8 +71,20 @@ spring:
     multipart:
       max-file-size: 10GB
       max-request-size: 100GB
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          # Spring on start get the Keycloak public certificates and put it in cache,
+          # and each request check if the token is signed and its signature match to the public certificate
+          jwk-set-uri: ${keycloak.host}/realms/${keycloak.realm}/protocol/openid-connect/certs # url to get the public certificates
+          issuer-uri:  ${keycloak.host}/realms/${keycloak.realm}
 
 storage:
   catalogo-videos:
     filename-pattern: type-{type}
     location-pattern: videoId-{videoId}
+
+logging:
+  level:
+    root: DEBUG

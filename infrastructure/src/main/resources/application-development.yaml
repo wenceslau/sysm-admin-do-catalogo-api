@@ -1,14 +1,18 @@
 database:
-  url: jdbc:mysql://localhost:3306/sysm_adm_videos_dev?useSSL=true&serverTimezone=UTC&characterEncoding=UTF-8&createDatabaseIfNotExist=true
+  url: jdbc:mysql://localhost:3307/sysm_adm_videos_dev?useSSL=true&serverTimezone=UTC&characterEncoding=UTF-8&createDatabaseIfNotExist=true
   username: root
   password: 123456
 
 amqp:
   admin_auto-create: true
   host: localhost
-  port: 5672
+  port: 5673
   username: adm_videos
   password: 123456
+
+keycloak:
+  realm: sysm-codeflix
+  host: http://localhost:8444
 
 spring:
   server_port: 8084

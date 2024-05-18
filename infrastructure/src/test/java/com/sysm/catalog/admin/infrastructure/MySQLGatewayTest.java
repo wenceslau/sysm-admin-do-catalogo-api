@@ -18,8 +18,9 @@ import java.lang.annotation.Target;
 @ActiveProfiles("test-integration")
 @ComponentScan(
         basePackages = "com.sysm.catalog.admin",
+        useDefaultFilters = false,
         includeFilters = {
-        @ComponentScan.Filter(type = FilterType.REGEX, pattern = ".[MySQLGateway]")
+        @ComponentScan.Filter(type = FilterType.REGEX, pattern = ".*MySQLGateway")
 })
 @DataJpaTest
 @ExtendWith(MySQLCleanUpExtension.class)

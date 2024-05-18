@@ -1,6 +1,7 @@
 package com.sysm.catalog.admin.infrastructure.api;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.sysm.catalog.admin.infrastructure.ApiTest;
 import com.sysm.catalog.admin.infrastructure.ControllerTest;
 import com.sysm.catalog.admin.application.category.create.CreateCategoryOutput;
 import com.sysm.catalog.admin.application.category.create.CreateCategoryUseCase;
@@ -86,6 +87,7 @@ public class ControllerAPITest {
                 .thenReturn(right(CreateCategoryOutput.with("123")));
 
         var request = MockMvcRequestBuilders.post("/categories")
+                .with(ApiTest.CATEGORIES_JWT)
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(contentRequest));
 
@@ -122,6 +124,7 @@ public class ControllerAPITest {
                 .thenReturn(left(Notification.create(new Error("'name' should not be null"))));
 
         var request = MockMvcRequestBuilders.post("/categories")
+                .with(ApiTest.CATEGORIES_JWT)
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(contentRequest));
 
@@ -159,6 +162,7 @@ public class ControllerAPITest {
                 .thenThrow(DomainException.with(new Error("'name' should not be null")));
 
         var request = MockMvcRequestBuilders.post("/categories")
+                .with(ApiTest.CATEGORIES_JWT)
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(contentRequest));
 
@@ -197,6 +201,7 @@ public class ControllerAPITest {
 
         var request = MockMvcRequestBuilders
                 .get("/categories/{id}", expectedId.getValue())
+                .with(ApiTest.CATEGORIES_JWT)
                 .accept(MediaType.APPLICATION_JSON)
                 .contentType(MediaType.APPLICATION_JSON);
 
@@ -228,6 +233,7 @@ public class ControllerAPITest {
 
         var request = MockMvcRequestBuilders
                 .get("/categories/{id}", expectedId.getValue())
+                .with(ApiTest.CATEGORIES_JWT)
                 .accept(MediaType.APPLICATION_JSON)
                 .contentType(MediaType.APPLICATION_JSON);
 
@@ -256,6 +262,7 @@ public class ControllerAPITest {
                 .thenReturn(right(UpdateCategoryOutput.with(expectedId)));
 
         var request = MockMvcRequestBuilders.put("/categories/{id}", expectedId)
+                .with(ApiTest.CATEGORIES_JWT)
                 .accept(MediaType.APPLICATION_JSON)
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(contentRequest));
@@ -286,6 +293,7 @@ public class ControllerAPITest {
                 .thenReturn(left(Notification.create(new Error("'name' should not be null"))));
 
         var request = MockMvcRequestBuilders.put("/categories/123")
+                .with(ApiTest.CATEGORIES_JWT)
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(contentRequest));
 
@@ -331,6 +339,7 @@ public class ControllerAPITest {
                 .queryParam("search", expectedTerms)
                 .queryParam("sort", expectedSort)
                 .queryParam("direction", expectedDirection)
+                .with(ApiTest.CATEGORIES_JWT)
                 .accept(MediaType.APPLICATION_JSON)
                 .contentType(MediaType.APPLICATION_JSON);
 
@@ -373,6 +382,7 @@ public class ControllerAPITest {
 
         // when
         final var request = MockMvcRequestBuilders.delete("/categories/{id}", expectedId)
+                .with(ApiTest.CATEGORIES_JWT)
                 .accept(MediaType.APPLICATION_JSON)
                 .contentType(MediaType.APPLICATION_JSON);
 
