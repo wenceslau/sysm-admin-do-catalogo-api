@@ -6,6 +6,12 @@
 # docker-compose --profile app down
 # docker-compose logs -f app
 
+Configure the index patter on Kibana
+
+Index name: logstash*
+Timestamp field: @timestamp
+Go to discover and choose the fields
+
 
 Clients -           It is an application which will connect on our Realm (KeyClock)
 

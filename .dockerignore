@@ -1,5 +1,5 @@
 #this file is to ignore files and folder when we copy the director to image container
-sandbox/.docker
+#sandbox/.docker
 sandbox
 .github
 .idea
