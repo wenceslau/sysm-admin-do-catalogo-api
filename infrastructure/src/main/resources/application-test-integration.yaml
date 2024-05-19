@@ -3,10 +3,6 @@ database:
   username: root
   password: 123456
 
-keycloak:
-  realm: test
-  host: http://test:8443
-
 amqp:
   admin_auto-create: true
   host: localhost
@@ -14,8 +10,12 @@ amqp:
   username: adm_videos
   password: 123456
 
+keycloak:
+  realm: test
+  host: http://test:8443
+
 spring:
-  server_port: 8084
+  server_port: 8080
   undertow_threads_worker: 32
   undertow_threads_io: 2
   flyway_enable: true

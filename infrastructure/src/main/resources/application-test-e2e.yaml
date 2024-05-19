@@ -15,7 +15,7 @@ keycloak:
   host: http://test:8443
 
 spring:
-  server_port: 8084
+  server_port: 8080
   undertow_threads_worker: 32
   undertow_threads_io: 2
   flyway_enable: true

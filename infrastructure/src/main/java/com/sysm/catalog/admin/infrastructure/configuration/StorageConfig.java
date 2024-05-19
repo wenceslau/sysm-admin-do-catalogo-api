@@ -21,20 +21,20 @@ public class StorageConfig {
         return new StorageProperties();
     }
 
+    //When is running in one of these profiles, create this bean for memory, if not, create the real bean for GC storage
     @Bean("storageService")
-    @Profile({"production", "development"})
+    @Profile({"development", "test-integration", "test-e2e"})
+    public StorageService inMemoryStorageService() {
+        return new InMemoryStorageService();
+    }
+
+    @Bean("storageService")
+    @ConditionalOnMissingBean
     public StorageService gcStorageService(
             final GoogleStorageProperties props,
             final Storage storage
     ) {
         return new GCStorageService(props.getBucket(), storage);
     }
-
-    @Bean("storageService")
-    @ConditionalOnMissingBean
-    public StorageService inMemoryStorageService() {
-        return new InMemoryStorageService();
-    }
-
 
 }

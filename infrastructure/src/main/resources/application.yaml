@@ -5,11 +5,11 @@ amqp:
     video-created:
       exchange: video.events
       routing-key: video.created
-      queue: video.created.queue # unncesessary
+      queue: video.created.queue # unnecessary
     video-encoded:
       exchange: video.events
       routing-key: video.encoded
-      queue: video.encoded.queue # unncesessary
+      queue: video.encoded.queue # unnecessary
 
 google:
   cloud:
@@ -87,4 +87,4 @@ storage:
 
 logging:
   level:
-    root: DEBUG
+    root: INFO

@@ -1,5 +1,5 @@
 database:
-  url: ${DATABASE_MYSQL_URL:jdbc:mysql://localhost:3306/sysm_adm_videos_prd?useSSL=true&serverTimezone=UTC&characterEncoding=UTF-8&createDatabaseIfNotExist=true}
+  url: ${DATABASE_MYSQL_URL:jdbc:mysql://localhost:3306/sysm_adm_videos_sbx?useSSL=true&serverTimezone=UTC&characterEncoding=UTF-8&createDatabaseIfNotExist=true}
   username: ${DATABASE_MYSQL_USERNAME:root}
   password: ${DATABASE_MYSQL_PASSWORD:123456}
 
@@ -16,8 +16,8 @@ keycloak:
 
 spring:
   server_port: 8080
-  undertow_threads_worker: 64
-  undertow_threads_io: 4
-  flyway_enable: false
-  jpa_show_sql: false
+  undertow_threads_worker: 32
+  undertow_threads_io: 2
+  flyway_enable: true
+  jpa_show_sql: true
   jpa_hibernate_ddl_auto: none

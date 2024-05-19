@@ -1,23 +1,30 @@
 database:
-  url: jdbc:mysql://localhost:3307/sysm_adm_videos_dev?useSSL=true&serverTimezone=UTC&characterEncoding=UTF-8&createDatabaseIfNotExist=true
+  url: jdbc:mysql://localhost:3306/sysm_adm_videos_dev?useSSL=true&serverTimezone=UTC&characterEncoding=UTF-8&createDatabaseIfNotExist=true
   username: root
   password: 123456
 
-amqp:
-  admin_auto-create: true
-  host: localhost
-  port: 5673
-  username: adm_videos
-  password: 123456
+amqp: #disable in dev environment
+  admin_auto-create:
+  host:
+  port:
+  username:
+  password:
 
-keycloak:
-  realm: sysm-codeflix
-  host: http://localhost:8444
+keycloak: #disable in dev environment
+  realm:
+  host:
 
 spring:
-  server_port: 8084
+  server_port: 8080
   undertow_threads_worker: 32
   undertow_threads_io: 2
   flyway_enable: true
   jpa_show_sql: true
   jpa_hibernate_ddl_auto: none
+
+  #On dev environment, this autoconfigured is disabled to keep the dev environment more clean and fast
+  autoconfigure:
+    exclude:
+      - org.springframework.boot.autoconfigure.amqp.RabbitAutoConfiguration
+      - org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration
+      - org.springframework.boot.autoconfigure.security.oauth2.resource.servlet.OAuth2ResourceServerAutoConfiguration

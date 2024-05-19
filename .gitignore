@@ -3,7 +3,9 @@ target/
 !**/src/main/**/target/
 !**/src/test/**/target/
 .env
+.env.local
 /data
+sandbox/.docker
 
 ### IntelliJ IDEA ###
 .idea/modules.xml
