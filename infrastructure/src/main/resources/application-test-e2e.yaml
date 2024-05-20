@@ -15,7 +15,7 @@ keycloak:
   host: http://test:8443
 
 logging:
-  root: info
+  root: INFO
 
 spring:
   server_port: 8080
