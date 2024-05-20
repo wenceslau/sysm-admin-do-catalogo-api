@@ -87,4 +87,4 @@ storage:
 
 logging:
   level:
-    root: ${logging.root}
+    root: ${log.root}

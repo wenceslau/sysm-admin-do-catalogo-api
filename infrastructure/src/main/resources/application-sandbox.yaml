@@ -14,9 +14,6 @@ keycloak:
   realm: ${KEYCLOAK_REALM:sysm-codeflix}
   host: ${KEYCLOAK_HOST:http://localhost:8443}
 
-logging:
-  root: ${LOGGING_ROOT}:INFO}
-
 spring:
   server_port: 8080
   undertow_threads_worker: 32
@@ -24,3 +21,6 @@ spring:
   flyway_enable: true
   jpa_show_sql: true
   jpa_hibernate_ddl_auto: none
+
+log:
+  root: ${LOGGING_ROOT}:INFO}

@@ -8,11 +8,13 @@ import com.sysm.catalog.admin.domain.aggregates.castmember.CastMember;
 import com.sysm.catalog.admin.domain.aggregates.castmember.CastMemberGateway;
 import com.sysm.catalog.admin.domain.aggregates.castmember.CastMemberID;
 import com.sysm.catalog.admin.domain.aggregates.castmember.CastMemberType;
+import com.sysm.catalog.admin.domain.aggregates.category.Category;
 import com.sysm.catalog.admin.domain.exceptions.NotFoundException;
 import com.sysm.catalog.admin.domain.exceptions.NotificationException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.ArgumentCaptor;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
@@ -21,6 +23,7 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.AdditionalAnswers.returnsFirstArg;
 import static org.mockito.ArgumentMatchers.*;
 import static org.mockito.Mockito.*;
@@ -76,13 +79,21 @@ public class UpdateCastMemberUseCaseTest extends UseCaseTest {
         verify(castMemberGateway).findById(eq(expectedId));
         Thread.sleep(100);
 
-        verify(castMemberGateway).update(argThat(aUpdatedMember ->
-                Objects.equals(expectedId, aUpdatedMember.getId())
-                        && Objects.equals(expectedName, aUpdatedMember.getName())
-                        && Objects.equals(expectedType, aUpdatedMember.getType())
-                        && Objects.equals(aMember.getCreatedAt(), aUpdatedMember.getCreatedAt())
-                        && aMember.getUpdatedAt().isBefore(aUpdatedMember.getUpdatedAt())
-        ));
+        var captor = ArgumentCaptor.forClass(CastMember.class);
+        Mockito.verify(castMemberGateway, times(1)).update(captor.capture());
+        var aUpdatedCastMember = captor.getValue();
+        assertEquals(expectedId, aUpdatedCastMember.getId());
+        assertEquals(expectedName, aUpdatedCastMember.getName());
+        assertEquals(expectedType, aUpdatedCastMember.getType());
+        assertEquals(aMember.getCreatedAt(), aUpdatedCastMember.getCreatedAt());
+        Assertions.assertTrue(aMember.getUpdatedAt().isBefore(aUpdatedCastMember.getUpdatedAt()));
+//        verify(castMemberGateway).update(argThat(aUpdatedMember ->
+//                Objects.equals(expectedId, aUpdatedMember.getId())
+//                        && Objects.equals(expectedName, aUpdatedMember.getName())
+//                        && Objects.equals(expectedType, aUpdatedMember.getType())
+//                        && Objects.equals(aMember.getCreatedAt(), aUpdatedMember.getCreatedAt())
+//                        && aMember.getUpdatedAt().isBefore(aUpdatedMember.getUpdatedAt())
+//        ));
     }
 
     @Test

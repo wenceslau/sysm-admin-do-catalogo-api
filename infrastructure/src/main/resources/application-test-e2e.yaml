@@ -14,9 +14,6 @@ keycloak:
   realm: test
   host: http://test:8443
 
-logging:
-  root: INFO
-
 spring:
   server_port: 8080
   undertow_threads_worker: 32
@@ -29,3 +26,6 @@ spring:
   autoconfigure:
     exclude:
       - org.springframework.boot.autoconfigure.amqp.RabbitAutoConfiguration
+
+log:
+  root: INFO

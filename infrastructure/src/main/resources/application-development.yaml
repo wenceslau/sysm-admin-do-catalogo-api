@@ -14,9 +14,6 @@ keycloak: #disable in dev environment
   realm:
   host:
 
-logging:
-  root: INFO
-
 spring:
   server_port: 8080
   undertow_threads_worker: 32
@@ -31,3 +28,6 @@ spring:
       - org.springframework.boot.autoconfigure.amqp.RabbitAutoConfiguration
       - org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration
       - org.springframework.boot.autoconfigure.security.oauth2.resource.servlet.OAuth2ResourceServerAutoConfiguration
+
+log:
+  root: INFO
