@@ -1,0 +1,33 @@
+# top-most EditorConfig file
+root = true
+
+# Default settings for all files
+[*]
+end_of_line = lf
+insert_final_newline = true
+trim_trailing_whitespace = true
+charset = utf-8
+
+# Java specific settings
+[*.java]
+indent_style = space
+indent_size = 4
+
+# Properties files (common in Java projects)
+[*.properties]
+indent_style = space
+indent_size = 4
+
+# XML files (often used for configuration in Java projects)
+[*.xml]
+indent_style = space
+indent_size = 4
+
+# JSON files (common for configurations)
+[*.json]
+indent_style = space
+indent_size = 2
+
+# Markdown files for documentation
+[*.md]
+trim_trailing_whitespace = false
