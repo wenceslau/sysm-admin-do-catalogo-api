@@ -16,7 +16,7 @@ docker compose -f elk/docker-compose.yml up -d
 echo "Inicializando os containers..."
 sleep 20
 
-docker compose -f app/docker-compose.yml up -d
+docker compose -f app/docker-compose.yml up -d --build
 #command to run and force the rebuild
 #docker compose -f app/docker-compose.yml up -d --build
 echo "Inicializando aplicação..."

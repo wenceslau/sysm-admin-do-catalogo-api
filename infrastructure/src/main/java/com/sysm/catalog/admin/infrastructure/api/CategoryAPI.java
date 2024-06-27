@@ -13,6 +13,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 @RequestMapping("categories")
 @Tag(name = "Category", description = "Category API")
 public interface CategoryAPI {
@@ -68,10 +69,7 @@ public interface CategoryAPI {
     })
     ResponseEntity<?> updateById(@PathVariable("id") String id, @RequestBody UpdateCategoryRequest request);
 
-    @DeleteMapping(value = "/{id}",
-            produces = MediaType.APPLICATION_JSON_VALUE,
-            consumes = MediaType.APPLICATION_JSON_VALUE
-    )
+    @DeleteMapping(value = "/{id}")
     @Operation(summary = "Delete category by id")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "204", description = "Category deleted"),

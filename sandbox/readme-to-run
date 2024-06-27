@@ -1,0 +1,19 @@
+
+
+RabbitMQ
+    http://localhost:15672/#/
+    admin/123456
+
+
+MySQL
+    localhost:3306/sysm_adm_videos_sbx
+    root/123456
+
+
+Keycloak
+    http://localhost:8443/auth/
+    admin/123456
+
+Kibana
+    http://localhost:5601/
+
