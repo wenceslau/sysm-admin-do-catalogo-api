@@ -155,7 +155,7 @@ public class Fixture {
             final String checksum = IdUtils.uuid();
             final byte[] content = "Conteudo".getBytes();
 
-            return Resource.with(content, checksum, checksum, contentType);
+            return Resource.with(content, checksum, contentType, contentType);
         }
 
         public static String description() {
