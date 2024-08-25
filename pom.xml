@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.sysm.catalog.admin</groupId>
-    <artifactId>sysm-api-catalog-admin</artifactId>
+    <artifactId>sysm-admin-do-catalogo-api</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>pom</packaging>
     <modules>
