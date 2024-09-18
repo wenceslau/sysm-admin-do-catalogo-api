@@ -17,10 +17,10 @@ public class DefaultGetGenreByIdUseCase extends GetGenreByIdUseCase{
     }
 
     @Override
-    public GenreOutput execute(final String anIn) {
+    public GenreGetOutput execute(final String anIn) {
         final var aGenreId = GenreID.from(anIn);
         return this.genreGateway.findById(aGenreId)
-                .map(GenreOutput::from)
+                .map(GenreGetOutput::from)
                 .orElseThrow(() -> NotFoundException.with(Genre.class, aGenreId));
     }
 }
