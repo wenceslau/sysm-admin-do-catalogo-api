@@ -1,6 +1,9 @@
 package com.sysm.catalog.admin.infrastructure.aggregates.video.models;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.sysm.catalog.admin.infrastructure.aggregates.castmember.models.CastMemberResponse;
+import com.sysm.catalog.admin.infrastructure.aggregates.category.models.CategoryResponse;
+import com.sysm.catalog.admin.infrastructure.aggregates.genre.models.GenreResponse;
 
 import java.time.Instant;
 import java.util.Set;
@@ -21,7 +24,10 @@ public record VideoResponse(
         @JsonProperty("thumbnail_half") ImageMediaResponse thumbnailHalf,
         @JsonProperty("video") AudioVideoMediaResponse video,
         @JsonProperty("trailer") AudioVideoMediaResponse trailer,
-        @JsonProperty("categories_id") Set<String> categoriesId,
+        @JsonProperty("categories") Set<CategoryResponse> categoriesId,
+        @JsonProperty("genres") Set<GenreResponse> genres,
+        @JsonProperty("cast_members") Set<CastMemberResponse> castMembers,
+        @JsonProperty("categories_id") Set<String> categories,
         @JsonProperty("genres_id") Set<String> genresId,
         @JsonProperty("cast_members_id") Set<String> castMembersId
 ) {

@@ -10,7 +10,7 @@ import com.sysm.catalog.admin.application.castamember.update.UpdateCastMemberUse
 import com.sysm.catalog.admin.domain.pagination.Pagination;
 import com.sysm.catalog.admin.domain.pagination.SearchQuery;
 import com.sysm.catalog.admin.infrastructure.aggregates.castmember.models.CastMemberListResponse;
-import com.sysm.catalog.admin.infrastructure.aggregates.castmember.models.CastMemberResponse;
+import com.sysm.catalog.admin.infrastructure.aggregates.castmember.models.CastMemberGetResponse;
 import com.sysm.catalog.admin.infrastructure.aggregates.castmember.models.CreateCastMemberRequest;
 import com.sysm.catalog.admin.infrastructure.aggregates.castmember.models.UpdateCastMemberRequest;
 import com.sysm.catalog.admin.infrastructure.aggregates.castmember.presenters.CastMemberPresenter;
@@ -67,7 +67,7 @@ public class CastMemberController implements CastMemberAPI {
     }
 
     @Override
-    public CastMemberResponse getById(final String id) {
+    public CastMemberGetResponse getById(final String id) {
         return CastMemberPresenter.present(this.getCastMemberByIdUseCase.execute(id));
     }
 

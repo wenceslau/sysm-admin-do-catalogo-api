@@ -1,5 +1,8 @@
 package com.sysm.catalog.admin.infrastructure.api.controller;
 
+import com.sysm.catalog.admin.application.castamember.retrieve.get.GetCastMemberByIdUseCase;
+import com.sysm.catalog.admin.application.category.retrieve.get.GetCategoryByIdUseCase;
+import com.sysm.catalog.admin.application.genre.retrieve.get.GetGenreByIdUseCase;
 import com.sysm.catalog.admin.application.video.create.CreateVideoCommand;
 import com.sysm.catalog.admin.application.video.create.CreateVideoUseCase;
 import com.sysm.catalog.admin.application.video.delete.DeleteVideoUseCase;
@@ -20,6 +23,8 @@ import com.sysm.catalog.admin.domain.aggregates.video.enums.VideoMediaType;
 import com.sysm.catalog.admin.domain.aggregates.video.records.VideoSearchQuery;
 import com.sysm.catalog.admin.domain.exceptions.NotificationException;
 import com.sysm.catalog.admin.domain.pagination.Pagination;
+import com.sysm.catalog.admin.domain.pagination.SearchQuery;
+import com.sysm.catalog.admin.infrastructure.aggregates.genre.presenters.GenreApiPresenter;
 import com.sysm.catalog.admin.infrastructure.aggregates.video.models.CreateVideoRequest;
 import com.sysm.catalog.admin.infrastructure.aggregates.video.models.UpdateVideoRequest;
 import com.sysm.catalog.admin.infrastructure.aggregates.video.models.VideoListResponse;
@@ -51,14 +56,18 @@ public class VideoController implements VideoAPI {
     private final GetMediaUseCase getMediaUseCase;
     private final UploadMediaUseCase uploadMediaUseCase;
 
+    private final GetGenreByIdUseCase getGenreByIdUseCase;
+    private final GetCategoryByIdUseCase getCategoryByIdUseCase;
+    private final GetCastMemberByIdUseCase getCastMemberByIdUseCase;
+
     public VideoController(
-            final CreateVideoUseCase createVideoUseCase,
-            final GetVideoByIdUseCase getVideoByIdUseCase,
-            final UpdateVideoUseCase updateVideoUseCase,
-            final DeleteVideoUseCase deleteVideoUseCase,
-            final ListVideosUseCase listVideosUseCase,
-            final GetMediaUseCase getMediaUseCase,
-            final UploadMediaUseCase uploadMediaUseCase
+        final CreateVideoUseCase createVideoUseCase,
+        final GetVideoByIdUseCase getVideoByIdUseCase,
+        final UpdateVideoUseCase updateVideoUseCase,
+        final DeleteVideoUseCase deleteVideoUseCase,
+        final ListVideosUseCase listVideosUseCase,
+        final GetMediaUseCase getMediaUseCase,
+        final UploadMediaUseCase uploadMediaUseCase, GetGenreByIdUseCase getGenreByIdUseCase, GetCategoryByIdUseCase getCategoryByIdUseCase, GetCastMemberByIdUseCase getCastMemberByIdUseCase
     ) {
         this.createVideoUseCase = Objects.requireNonNull(createVideoUseCase);
         this.getVideoByIdUseCase = Objects.requireNonNull(getVideoByIdUseCase);
@@ -67,6 +76,9 @@ public class VideoController implements VideoAPI {
         this.listVideosUseCase = Objects.requireNonNull(listVideosUseCase);
         this.getMediaUseCase = Objects.requireNonNull(getMediaUseCase);
         this.uploadMediaUseCase = Objects.requireNonNull(uploadMediaUseCase);
+        this.getGenreByIdUseCase = getGenreByIdUseCase;
+        this.getCategoryByIdUseCase = getCategoryByIdUseCase;
+        this.getCastMemberByIdUseCase = getCastMemberByIdUseCase;
     }
 
     @Override
@@ -87,7 +99,8 @@ public class VideoController implements VideoAPI {
         final var aQuery =
                 new VideoSearchQuery(page, perPage, search, sort, direction, castMemberIDs, categoriesIDs, genresIDs);
 
-        return VideoApiPresenter.present(this.listVideosUseCase.execute(aQuery));
+        return this.listVideosUseCase.execute(aQuery)
+            .map(output -> VideoApiPresenter.present(output, this.getCategoryByIdUseCase, this.getGenreByIdUseCase));
     }
 
     @Override
@@ -154,7 +167,12 @@ public class VideoController implements VideoAPI {
 
     @Override
     public VideoResponse getById(final String anId) {
-        return VideoApiPresenter.present(this.getVideoByIdUseCase.execute(anId));
+        return VideoApiPresenter.present(
+            this.getVideoByIdUseCase.execute(anId),
+            this.getCategoryByIdUseCase,
+            this.getGenreByIdUseCase,
+            this.getCastMemberByIdUseCase
+        );
     }
 
     @Override
