@@ -13,7 +13,7 @@ import java.time.Instant;
 class CastMembersResponseTest {
 
     @Autowired
-    private JacksonTester<CastMemberResponse> json;
+    private JacksonTester<CastMemberGetResponse> json;
 
     @Test
     public void testMarshall() throws Exception {
@@ -23,7 +23,7 @@ class CastMembersResponseTest {
         final var expectedCreatedAt = Instant.now().toString();
         final var expectedUpdatedAt = Instant.now().toString();
 
-        final var response = new CastMemberResponse(
+        final var response = new CastMemberGetResponse(
                 expectedId,
                 expectedName,
                 expectedType,

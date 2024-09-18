@@ -6,14 +6,14 @@ import com.sysm.catalog.admin.domain.aggregates.castmember.CastMemberType;
 import com.sysm.catalog.admin.domain.aggregates.category.CategoryID;
 import com.sysm.catalog.admin.domain.aggregates.genre.GenreID;
 import com.sysm.catalog.admin.infrastructure.ApiTest;
-import com.sysm.catalog.admin.infrastructure.aggregates.castmember.models.CastMemberResponse;
+import com.sysm.catalog.admin.infrastructure.aggregates.castmember.models.CastMemberGetResponse;
 import com.sysm.catalog.admin.infrastructure.aggregates.castmember.models.CreateCastMemberRequest;
 import com.sysm.catalog.admin.infrastructure.aggregates.castmember.models.UpdateCastMemberRequest;
 import com.sysm.catalog.admin.infrastructure.aggregates.category.models.CategoryGetResponse;
 import com.sysm.catalog.admin.infrastructure.aggregates.category.models.CreateCategoryRequest;
 import com.sysm.catalog.admin.infrastructure.aggregates.category.models.UpdateCategoryRequest;
 import com.sysm.catalog.admin.infrastructure.aggregates.genre.models.CreateGenreRequest;
-import com.sysm.catalog.admin.infrastructure.aggregates.genre.models.GenreResponse;
+import com.sysm.catalog.admin.infrastructure.aggregates.genre.models.GenreGetResponse;
 import com.sysm.catalog.admin.infrastructure.aggregates.genre.models.UpdateGenreRequest;
 import com.sysm.catalog.admin.infrastructure.configuration.json.Json;
 import org.springframework.http.MediaType;
@@ -61,8 +61,8 @@ public interface MockDsl {
         return this.list("/cast_members", page, perPage, search, sort, direction);
     }
 
-    default CastMemberResponse retrieveACastMember(final CastMemberID anId) throws Exception {
-        return this.retrieve("/cast_members/", anId, CastMemberResponse.class);
+    default CastMemberGetResponse retrieveACastMember(final CastMemberID anId) throws Exception {
+        return this.retrieve("/cast_members/", anId, CastMemberGetResponse.class);
     }
 
     default ResultActions retrieveACastMemberResult(final CastMemberID anId) throws Exception {
@@ -133,8 +133,8 @@ public interface MockDsl {
         return this.list("/genres", page, perPage, search, sort, direction);
     }
 
-    default GenreResponse retrieveAGenre(final GenreID anId) throws Exception {
-        return this.retrieve("/genres/", anId, GenreResponse.class);
+    default GenreGetResponse retrieveAGenre(final GenreID anId) throws Exception {
+        return this.retrieve("/genres/", anId, GenreGetResponse.class);
     }
 
     default ResultActions updateAGenre(final GenreID anId, final UpdateGenreRequest aRequest) throws Exception {

@@ -1,7 +1,7 @@
 package com.sysm.catalog.admin.infrastructure.aggregates.genre.model;
 
 import com.sysm.catalog.admin.infrastructure.JacksonTest;
-import com.sysm.catalog.admin.infrastructure.aggregates.genre.models.GenreResponse;
+import com.sysm.catalog.admin.infrastructure.aggregates.genre.models.GenreGetResponse;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +14,7 @@ import java.util.List;
 public class GenresResponseTest {
 
     @Autowired
-    private JacksonTester<GenreResponse> json;
+    private JacksonTester<GenreGetResponse> json;
 
     @Test
     public void testMarshall() throws Exception {
@@ -26,7 +26,7 @@ public class GenresResponseTest {
         final var expectedUpdatedAt = Instant.now();
         final var expectedDeletedAt = Instant.now();
 
-        final var response = new GenreResponse(
+        final var response = new GenreGetResponse(
                 expectedId,
                 expectedName,
                 expectedCategories,
@@ -67,7 +67,7 @@ public class GenresResponseTest {
                   "created_at": "%s",
                   "deleted_at": "%s",
                   "updated_at": "%s"
-                }    
+                }
                 """.formatted(
                 expectedId,
                 expectedName,

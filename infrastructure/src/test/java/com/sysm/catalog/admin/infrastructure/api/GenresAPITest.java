@@ -4,7 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.sysm.catalog.admin.application.genre.create.CreateGenreOutput;
 import com.sysm.catalog.admin.application.genre.create.CreateGenreUseCase;
 import com.sysm.catalog.admin.application.genre.delete.DeleteGenreUseCase;
-import com.sysm.catalog.admin.application.genre.retrieve.get.GenreOutput;
+import com.sysm.catalog.admin.application.genre.retrieve.get.GenreGetOutput;
 import com.sysm.catalog.admin.application.genre.retrieve.get.GetGenreByIdUseCase;
 import com.sysm.catalog.admin.application.genre.retrieve.list.GenreListOutput;
 import com.sysm.catalog.admin.application.genre.retrieve.list.ListGenreUseCase;
@@ -152,7 +152,7 @@ public class GenresAPITest {
         final var expectedId = aGenre.getId().getValue();
 
         when(getGenreByIdUseCase.execute(any()))
-                .thenReturn(GenreOutput.from(aGenre));
+                .thenReturn(GenreGetOutput.from(aGenre));
 
         // when
         final var aRequest = get("/genres/{id}", expectedId)
