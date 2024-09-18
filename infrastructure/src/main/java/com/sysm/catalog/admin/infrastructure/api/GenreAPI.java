@@ -3,7 +3,7 @@ package com.sysm.catalog.admin.infrastructure.api;
 import com.sysm.catalog.admin.domain.pagination.Pagination;
 import com.sysm.catalog.admin.infrastructure.aggregates.genre.models.CreateGenreRequest;
 import com.sysm.catalog.admin.infrastructure.aggregates.genre.models.GenreListResponse;
-import com.sysm.catalog.admin.infrastructure.aggregates.genre.models.GenreResponse;
+import com.sysm.catalog.admin.infrastructure.aggregates.genre.models.GenreGetResponse;
 import com.sysm.catalog.admin.infrastructure.aggregates.genre.models.UpdateGenreRequest;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
@@ -56,7 +56,7 @@ public interface GenreAPI {
             @ApiResponse(responseCode = "404", description = "Genre was not found"),
             @ApiResponse(responseCode = "500", description = "An internal server error was thrown"),
     })
-    GenreResponse getById(@PathVariable(name = "id") String id);
+    GenreGetResponse getById(@PathVariable(name = "id") String id);
 
     @PutMapping(
             value = "{id}",

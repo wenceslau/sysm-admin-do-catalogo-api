@@ -2,7 +2,7 @@ package com.sysm.catalog.admin.infrastructure.api;
 
 import com.sysm.catalog.admin.domain.pagination.Pagination;
 import com.sysm.catalog.admin.infrastructure.aggregates.castmember.models.CastMemberListResponse;
-import com.sysm.catalog.admin.infrastructure.aggregates.castmember.models.CastMemberResponse;
+import com.sysm.catalog.admin.infrastructure.aggregates.castmember.models.CastMemberGetResponse;
 import com.sysm.catalog.admin.infrastructure.aggregates.castmember.models.CreateCastMemberRequest;
 import com.sysm.catalog.admin.infrastructure.aggregates.castmember.models.UpdateCastMemberRequest;
 import io.swagger.v3.oas.annotations.Operation;
@@ -52,7 +52,7 @@ public interface CastMemberAPI {
             @ApiResponse(responseCode = "404", description = "Cast member was not found"),
             @ApiResponse(responseCode = "500", description = "An internal server error was thrown"),
     })
-    CastMemberResponse getById(@PathVariable String id);
+    CastMemberGetResponse getById(@PathVariable String id);
 
     @PutMapping(
             value = "{id}",
