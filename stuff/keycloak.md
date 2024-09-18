@@ -1,4 +1,4 @@
-![image.png](stuff/x_keycloak_1.png)
+![image.png](x_keycloak_1.png)
 
 ## **Manage**
 
@@ -53,11 +53,11 @@ User Federation
 * Create the group and assign the roles
 * Create the user and assign the group to user
 
-![image.png](stuff/x_keycloak_2.png)
+![image.png](x_keycloak_2.png)
 
-![image.png](stuff/x_keycloak_3.png)
+![image.png](x_keycloak_3.png)
 
-![image.png](stuff/x_keycloak_4.png)
+![image.png](x_keycloak_4.png)
 
 
-![image.png](stuff/x_keycloak_6.png)
+![image.png](x_keycloak_6.png)

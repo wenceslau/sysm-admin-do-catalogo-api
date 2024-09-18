@@ -6,7 +6,7 @@ import com.sysm.catalog.admin.domain.aggregates.genre.Genre;
 import java.time.Instant;
 import java.util.List;
 
-public record GenreOutput(
+public record GenreGetOutput(
         String id,
         String name,
         boolean isActive,
@@ -17,8 +17,8 @@ public record GenreOutput(
 ) {
 
 
-    public static GenreOutput from(final Genre aGenre) {
-        return new GenreOutput(
+    public static GenreGetOutput from(final Genre aGenre) {
+        return new GenreGetOutput(
                 aGenre.getId().getValue(),
                 aGenre.getName(),
                 aGenre.isActive(),

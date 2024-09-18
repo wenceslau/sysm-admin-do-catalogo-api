@@ -30,4 +30,19 @@ Sessions -          User online
 
 Events -            Administrative logs and others.... see deep after
 
-Configuration
+Configuration:
+
+Create a realm
+Create a client
+    For base configuration, enable Client Authentication and Service Accounts Roles
+Create a realm roles
+    portfolio_admin, portfolio_reader, is an example of roles
+Create the groups to group the roles
+    portfolio-admins, portfolio-readers, is an example of groups
+Associate the roles to the groups
+    portfolio_admin -> portfolio-admins
+    portfolio_reader -> portfolio-readers
+Create the users
+    admin, demo, is an example of users
+Associate the groups to the users
+Define a password for the user
