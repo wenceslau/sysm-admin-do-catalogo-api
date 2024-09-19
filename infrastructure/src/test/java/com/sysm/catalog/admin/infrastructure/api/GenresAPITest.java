@@ -1,6 +1,7 @@
 package com.sysm.catalog.admin.infrastructure.api;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.sysm.catalog.admin.application.category.retrieve.get.GetCategoryByIdUseCase;
 import com.sysm.catalog.admin.application.genre.create.CreateGenreOutput;
 import com.sysm.catalog.admin.application.genre.create.CreateGenreUseCase;
 import com.sysm.catalog.admin.application.genre.delete.DeleteGenreUseCase;
@@ -21,6 +22,7 @@ import com.sysm.catalog.admin.infrastructure.ApiTest;
 import com.sysm.catalog.admin.infrastructure.ControllerTest;
 import com.sysm.catalog.admin.infrastructure.aggregates.genre.models.CreateGenreRequest;
 import com.sysm.catalog.admin.infrastructure.aggregates.genre.models.UpdateGenreRequest;
+import org.junit.Ignore;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.mock.mockito.MockBean;
@@ -62,6 +64,9 @@ public class GenresAPITest {
     @MockBean
     private ListGenreUseCase listGenreUseCase;
 
+    @MockBean
+    private GetCategoryByIdUseCase getCategoryByIdUseCase;
+
     @Test
     public void givenAValidCommand_whenCallsCreateGenre_shouldReturnGenreId() throws Exception {
         // given
@@ -75,6 +80,9 @@ public class GenresAPITest {
 
         when(createGenreUseCase.execute(any()))
                 .thenReturn(CreateGenreOutput.from(expectedId));
+
+        when(getCategoryByIdUseCase.execute(any()))
+                .thenReturn(null);
 
         // when
         final var aRequest = post("/genres")
@@ -111,6 +119,9 @@ public class GenresAPITest {
 
         when(createGenreUseCase.execute(any()))
                 .thenThrow(new NotificationException("Error", Notification.create(new Error(expectedErrorMessage))));
+
+        when(getCategoryByIdUseCase.execute(any()))
+            .thenReturn(null);
 
         // when
         final var aRequest = post("/genres")
@@ -154,6 +165,9 @@ public class GenresAPITest {
         when(getGenreByIdUseCase.execute(any()))
                 .thenReturn(GenreGetOutput.from(aGenre));
 
+        when(getCategoryByIdUseCase.execute(any()))
+            .thenReturn(null);
+
         // when
         final var aRequest = get("/genres/{id}", expectedId)
                 .with(ApiTest.GENRES_JWT)
@@ -184,6 +198,9 @@ public class GenresAPITest {
 
         when(getGenreByIdUseCase.execute(any()))
                 .thenThrow(NotFoundException.with(Genre.class, expectedId));
+
+        when(getCategoryByIdUseCase.execute(any()))
+            .thenReturn(null);
 
         // when
         final var aRequest = get("/genres/{id}", expectedId.getValue())
@@ -216,6 +233,9 @@ public class GenresAPITest {
 
         when(updateGenreUseCase.execute(any()))
                 .thenReturn(UpdateGenreOutput.from(aGenre));
+
+        when(getCategoryByIdUseCase.execute(any()))
+            .thenReturn(null);
 
         // when
         final var aRequest = put("/genres/{id}", expectedId)
@@ -254,6 +274,9 @@ public class GenresAPITest {
 
         when(updateGenreUseCase.execute(any()))
                 .thenThrow(new NotificationException("Error", Notification.create(new Error(expectedErrorMessage))));
+
+        when(getCategoryByIdUseCase.execute(any()))
+            .thenReturn(null);
 
         // when
         final var aRequest = put("/genres/{id}", expectedId)

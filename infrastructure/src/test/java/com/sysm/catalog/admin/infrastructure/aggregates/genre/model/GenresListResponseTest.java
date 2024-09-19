@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.json.JacksonTester;
 
 import java.time.Instant;
+import java.util.List;
 
 @JacksonTest
 class GenresListResponseTest {
@@ -26,6 +27,7 @@ class GenresListResponseTest {
         final var response = new GenreListResponse(
                 expectedId,
                 expectedName,
+                List.of(),
                 expectedIsActive,
                 expectedCreatedAt,
                 expectedDeletedAt

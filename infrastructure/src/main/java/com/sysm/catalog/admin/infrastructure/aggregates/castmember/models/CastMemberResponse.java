@@ -10,6 +10,9 @@ public record CastMemberResponse(
 ) {
 
     public static CastMemberResponse from(CastMemberOutput castMemberOutput) {
+        if (castMemberOutput == null) {
+            return null;
+        }
         return new CastMemberResponse(
             castMemberOutput.id(),
             castMemberOutput.name()

@@ -75,9 +75,9 @@ public class UpdateCastMemberUseCaseTest extends UseCaseTest {
         Assertions.assertNotNull(actualOutput);
         Assertions.assertEquals(expectedId.getValue(), actualOutput.id());
 
-        Thread.sleep(100);
+        Thread.sleep(300);
         verify(castMemberGateway).findById(eq(expectedId));
-        Thread.sleep(100);
+        Thread.sleep(200);
 
         var captor = ArgumentCaptor.forClass(CastMember.class);
         Mockito.verify(castMemberGateway, times(1)).update(captor.capture());

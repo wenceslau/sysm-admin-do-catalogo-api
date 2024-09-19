@@ -8,6 +8,9 @@ public record GenreResponse(
 ) {
 
     public static GenreResponse from(GenreGetOutput genreGetOutput) {
+        if (genreGetOutput == null) {
+            return null;
+        }
         return new GenreResponse(genreGetOutput.id(), genreGetOutput.name());
     }
 }

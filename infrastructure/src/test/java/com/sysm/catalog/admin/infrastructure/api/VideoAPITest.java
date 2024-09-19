@@ -2,6 +2,12 @@ package com.sysm.catalog.admin.infrastructure.api;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.sysm.catalog.admin.application.Fixture;
+import com.sysm.catalog.admin.application.castamember.retrieve.get.DefaultGetCastMemberByIdUseCase;
+import com.sysm.catalog.admin.application.castamember.retrieve.get.GetCastMemberByIdUseCase;
+import com.sysm.catalog.admin.application.category.retrieve.get.DefaultGetCategoryByIdUseCase;
+import com.sysm.catalog.admin.application.category.retrieve.get.GetCategoryByIdUseCase;
+import com.sysm.catalog.admin.application.genre.retrieve.get.DefaultGetGenreByIdUseCase;
+import com.sysm.catalog.admin.application.genre.retrieve.get.GetGenreByIdUseCase;
 import com.sysm.catalog.admin.application.video.create.CreateVideoCommand;
 import com.sysm.catalog.admin.application.video.create.CreateVideoOutput;
 import com.sysm.catalog.admin.application.video.create.CreateVideoUseCase;
@@ -34,6 +40,7 @@ import com.sysm.catalog.admin.infrastructure.ApiTest;
 import com.sysm.catalog.admin.infrastructure.ControllerTest;
 import com.sysm.catalog.admin.infrastructure.aggregates.video.models.CreateVideoRequest;
 import com.sysm.catalog.admin.infrastructure.aggregates.video.models.UpdateVideoRequest;
+import org.junit.Ignore;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentCaptor;
@@ -87,6 +94,15 @@ class VideoAPITest {
     @MockBean
     private UploadMediaUseCase uploadMediaUseCase;
 
+    @MockBean
+    private DefaultGetGenreByIdUseCase getGenreByIdUseCase;
+
+    @MockBean
+    private DefaultGetCategoryByIdUseCase getCategoryByIdUseCase;
+
+    @MockBean
+    private DefaultGetCastMemberByIdUseCase getCastMemberByIdUseCase;
+
     @Test
     public void givenAValidCommand_whenCallsCreateFull_shouldReturnAnId() throws Exception {
         // given
@@ -124,6 +140,10 @@ class VideoAPITest {
 
         when(createVideoUseCase.execute(any()))
                 .thenReturn(new CreateVideoOutput(expectedId.getValue()));
+
+        when(getCategoryByIdUseCase.execute(any())).thenReturn(null);
+        when(getGenreByIdUseCase.execute(any())).thenReturn(null);
+        when(getCastMemberByIdUseCase.execute(any())).thenReturn(null);
 
         // when
         final var aRequest = multipart("/videos")
@@ -346,6 +366,10 @@ class VideoAPITest {
                 .updateThumbnailHalfMedia(expectedThumbHalf);
 
         final var expectedId = aVideo.getId().getValue();
+
+        when(getCategoryByIdUseCase.execute(any())).thenReturn(null);
+        when(getGenreByIdUseCase.execute(any())).thenReturn(null);
+        when(getCastMemberByIdUseCase.execute(any())).thenReturn(null);
 
         when(getVideoByIdUseCase.execute(any()))
                 .thenReturn(VideoOutput.from(aVideo));

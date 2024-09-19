@@ -10,6 +10,9 @@ public record CategoryResponse(
         @JsonProperty("name") String name){
 
     public static CategoryResponse from(CategoryGetOutput categoryGetResponse) {
+        if (categoryGetResponse == null) {
+            return null;
+        }
         return new CategoryResponse(categoryGetResponse.id().getValue(), categoryGetResponse.name());
     }
 }

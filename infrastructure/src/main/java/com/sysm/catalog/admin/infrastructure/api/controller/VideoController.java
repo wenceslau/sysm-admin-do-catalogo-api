@@ -67,7 +67,10 @@ public class VideoController implements VideoAPI {
         final DeleteVideoUseCase deleteVideoUseCase,
         final ListVideosUseCase listVideosUseCase,
         final GetMediaUseCase getMediaUseCase,
-        final UploadMediaUseCase uploadMediaUseCase, GetGenreByIdUseCase getGenreByIdUseCase, GetCategoryByIdUseCase getCategoryByIdUseCase, GetCastMemberByIdUseCase getCastMemberByIdUseCase
+        final UploadMediaUseCase uploadMediaUseCase,
+        final GetGenreByIdUseCase getGenreByIdUseCase,
+        final GetCategoryByIdUseCase getCategoryByIdUseCase,
+        final GetCastMemberByIdUseCase getCastMemberByIdUseCase
     ) {
         this.createVideoUseCase = Objects.requireNonNull(createVideoUseCase);
         this.getVideoByIdUseCase = Objects.requireNonNull(getVideoByIdUseCase);
