@@ -4,6 +4,7 @@ import com.sysm.catalog.admin.application.castamember.retrieve.get.GetCastMember
 import com.sysm.catalog.admin.application.category.retrieve.get.GetCategoryByIdUseCase;
 import com.sysm.catalog.admin.application.genre.retrieve.get.GetGenreByIdUseCase;
 import com.sysm.catalog.admin.application.video.media.upload.UploadMediaOutput;
+import com.sysm.catalog.admin.application.video.retrieve.get.GetVideoByIdUseCase;
 import com.sysm.catalog.admin.application.video.retrieve.get.VideoOutput;
 import com.sysm.catalog.admin.application.video.retrieve.list.VideoListOutput;
 import com.sysm.catalog.admin.application.video.update.UpdateVideoOutput;
@@ -24,7 +25,7 @@ public interface VideoApiPresenter {
     static VideoResponse present(final VideoOutput output, GetCategoryByIdUseCase getCategoryByIdUseCase, GetGenreByIdUseCase getGenreByIdUseCase, GetCastMemberByIdUseCase getCastMemberByIdUseCase) {
 
         var listGenres = new HashSet<GenreResponse>();
-        var listCategories = new HashSet<CategoryResponse> ();
+        var listCategories = new HashSet<CategoryResponse>();
         var listCastMembers = new HashSet<CastMemberResponse>();
 
         output.genres().forEach(genre -> {
@@ -43,27 +44,27 @@ public interface VideoApiPresenter {
         });
 
         return new VideoResponse(
-                output.id(),
-                output.title(),
-                output.description(),
-                output.launchedAt(),
-                output.duration(),
-                output.opened(),
-                output.published(),
-                output.rating().getName(),
-                output.createdAt(),
-                output.updatedAt(),
-                present(output.banner()),
-                present(output.thumbnail()),
-                present(output.thumbnailHalf()),
-                present(output.video()),
-                present(output.trailer()),
-                listCategories,
-                listGenres,
-                listCastMembers,
-                output.categories(),
-                output.genres(),
-                output.castMembers()
+            output.id(),
+            output.title(),
+            output.description(),
+            output.launchedAt(),
+            output.duration(),
+            output.opened(),
+            output.published(),
+            output.rating().getName(),
+            output.createdAt(),
+            output.updatedAt(),
+            present(output.banner()),
+            present(output.thumbnail()),
+            present(output.thumbnailHalf()),
+            present(output.video()),
+            present(output.trailer()),
+            listCategories,
+            listGenres,
+            listCastMembers,
+            output.categories(),
+            output.genres(),
+            output.castMembers()
         );
     }
 
@@ -72,12 +73,12 @@ public interface VideoApiPresenter {
             return null;
         }
         return new AudioVideoMediaResponse(
-                media.id(),
-                media.checksum(),
-                media.name(),
-                media.rawLocation(),
-                media.encodedLocation(),
-                media.status().name()
+            media.id(),
+            media.checksum(),
+            media.name(),
+            media.rawLocation(),
+            media.encodedLocation(),
+            media.status().name()
         );
     }
 
@@ -86,10 +87,10 @@ public interface VideoApiPresenter {
             return null;
         }
         return new ImageMediaResponse(
-                image.id(),
-                image.checksum(),
-                image.name(),
-                image.location()
+            image.id(),
+            image.checksum(),
+            image.name(),
+            image.location()
         );
     }
 
@@ -99,13 +100,13 @@ public interface VideoApiPresenter {
 
     static VideoListResponse present(final VideoListOutput output) {
         return new VideoListResponse(
-                output.id(),
-                output.title(),
-                List.of(),
-                List.of(),
-                output.description(),
-                output.createdAt(),
-                output.updatedAt()
+            output.id(),
+            output.title(),
+            List.of(),
+            List.of(),
+            output.description(),
+            output.createdAt(),
+            output.updatedAt()
         );
     }
 
@@ -117,21 +118,26 @@ public interface VideoApiPresenter {
         return new UploadMediaResponse(output.videoId(), output.mediaType());
     }
 
-    static VideoListResponse present(final VideoListOutput output, GetCategoryByIdUseCase getCategoryByIdUseCase, GetGenreByIdUseCase getGenreByIdUseCase) {
+    static VideoListResponse present(final VideoListOutput output,
+                                     final GetVideoByIdUseCase getVideoByIdUseCase,
+                                     final GetCategoryByIdUseCase getCategoryByIdUseCase,
+                                     final GetGenreByIdUseCase getGenreByIdUseCase) {
 
         var listCategories = new ArrayList<CategoryResponse>();
+        var listGenres = new ArrayList<GenreResponse>();
 
-        output.categories_id().forEach(category -> {
-            var categoryOutput = getCategoryByIdUseCase.execute(category);
-            listCategories.add(CategoryResponse.from(categoryOutput));
-        });
+        var videoGetOutput = getVideoByIdUseCase.execute(output.id());
+        if (videoGetOutput != null) {
+            videoGetOutput.categories().forEach(category -> {
+                var categoryOutput = getCategoryByIdUseCase.execute(category);
+                listCategories.add(CategoryResponse.from(categoryOutput));
+            });
 
-        var listGenres = new ArrayList<GenreResponse> ();
-
-        output.genres_id().forEach(genre -> {
-            var genreOutput = getGenreByIdUseCase.execute(genre);
-            listGenres.add(GenreResponse.from(genreOutput));
-        });
+            videoGetOutput.genres().forEach(genre -> {
+                var genreOutput = getGenreByIdUseCase.execute(genre);
+                listGenres.add(GenreResponse.from(genreOutput));
+            });
+        }
 
         return new VideoListResponse(
             output.id(),

@@ -103,7 +103,8 @@ public class VideoController implements VideoAPI {
                 new VideoSearchQuery(page, perPage, search, sort, direction, castMemberIDs, categoriesIDs, genresIDs);
 
         return this.listVideosUseCase.execute(aQuery)
-            .map(output -> VideoApiPresenter.present(output, this.getCategoryByIdUseCase, this.getGenreByIdUseCase));
+            .map(output -> VideoApiPresenter.present(output, this.getVideoByIdUseCase,
+                this.getCategoryByIdUseCase, this.getGenreByIdUseCase));
     }
 
     @Override
