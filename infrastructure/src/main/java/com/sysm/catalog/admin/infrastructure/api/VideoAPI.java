@@ -17,7 +17,6 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.util.Set;
 
-@CrossOrigin(origins = "*", allowedHeaders = "*")
 @RequestMapping(value = "videos")
 @Tag(name = "Video")
 public interface VideoAPI {
