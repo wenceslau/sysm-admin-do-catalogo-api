@@ -1,0 +1,53 @@
+services:
+  mysql_prd:
+    container_name: adm_videos_mysql_prd
+    image: mysql:8.4
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_ROOT_HOST: ${MYSQL_ROOT_HOST}
+    security_opt:
+      - seccomp:unconfined
+    ports:
+      - 3306:3306
+    volumes:
+      - mysql_vol_prd:/var/lib/mysql
+    networks:
+      - adm_videos_services
+
+  rabbitmq_prd:
+    container_name: adm_videos_rabbitmq_prd
+    image: rabbitmq:3-management
+    environment:
+      RABBITMQ_ERLANG_COOKIE: ${RABBITMQ_ERLANG_COOKIE}
+      RABBITMQ_DEFAULT_USER: ${RABBITMQ_DEFAULT_USER}
+      RABBITMQ_DEFAULT_PASS: ${RABBITMQ_DEFAULT_PASS}
+      RABBITMQ_DEFAULT_VHOST: ${RABBITMQ_DEFAULT_VHOST}
+    ports:
+        - 5672:5672
+        - 15672:15672
+    networks:
+      - adm_videos_services
+
+  keycloak_prd:
+    container_name: adm_videos_keycloak_prd
+    image: keycloak/keycloak:23.0
+    environment:
+      KEYCLOAK_ADMIN: ${KEYCLOAK_ADMIN}
+      KEYCLOAK_ADMIN_PASSWORD: ${KEYCLOAK_ADMIN_PASSWORD}
+    ports:
+      - 8080:8080
+    command:
+      - start-dev
+      #- --hostname-url=http://keycloak_prd:8080 # Use this command when the application is inside Docker
+    volumes:
+      - ./keycloak_vol_prd:/opt/keycloak/data/h2:rw
+    networks:
+      - adm_videos_services
+
+networks:
+  adm_videos_services:
+    external: true
+
+volumes:
+    mysql_vol_prd:

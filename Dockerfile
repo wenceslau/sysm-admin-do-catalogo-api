@@ -1,13 +1,24 @@
-FROM eclipse-temurin:17.0.5_8-jre-alpine
+# build stage
+# Use an official Maven image as the base
+FROM maven:3.8.5-openjdk-17 AS build
 
-COPY infrastructure/build/*.jar /opt/app/application.jar
+# Set the working directory in the container
+WORKDIR /app
 
-# Create a group called spring and a user called spring
-# and add the user to the group
-RUN addgroup -S spring && adduser -S spring -G spring
+# Copy the pom.xml file and the source code to the container
+COPY . .
 
-# Change the owner of the application.jar file to spring
-# To avoid use root user
-USER spring:spring
+# Package the application
+RUN mvn clean package -DskipTests
 
-CMD java -jar /opt/app/application.jar
+# Use an official OpenJDK image as the base for the final image
+FROM openjdk:17-jdk-slim
+
+# Set the working directory in the container
+WORKDIR /app
+
+# Copy the packaged jar file from the build stage
+COPY --from=build /app/infrastructure/build/application.jar ./application.jar
+
+# Specify the command to run the application
+CMD java -jar application.jar

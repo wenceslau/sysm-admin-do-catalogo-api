@@ -1,0 +1,17 @@
+services:
+  mysql_dev:
+    container_name: adm_videos_mysql_dev
+    image: mysql:8.4
+    environment:
+      MYSQL_ROOT_PASSWORD: 123456
+      MYSQL_DATABASE: sysm_adm_videos_dev
+      MYSQL_ROOT_HOST: '%'
+    security_opt:
+      - seccomp:unconfined
+    ports:
+      - 3306:3306
+    volumes:
+      - mysql_vol_dev:/var/lib/mysql:rw
+
+volumes:
+    mysql_vol_dev:
