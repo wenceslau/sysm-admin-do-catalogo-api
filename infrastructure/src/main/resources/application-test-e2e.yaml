@@ -28,4 +28,4 @@ spring:
       - org.springframework.boot.autoconfigure.amqp.RabbitAutoConfiguration
 
 log:
-  root: INFO
+  level_root: INFO

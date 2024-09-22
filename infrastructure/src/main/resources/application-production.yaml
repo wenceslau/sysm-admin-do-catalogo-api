@@ -15,12 +15,12 @@ keycloak:
   host: ${KEYCLOAK_HOST:http://localhost:8443}
 
 spring:
-  server_port: 8080
+  server_port: ${SERVER_PORT:8084}
   undertow_threads_worker: 64
   undertow_threads_io: 4
-  flyway_enable: false
+  flyway_enable: true
   jpa_show_sql: false
   jpa_hibernate_ddl_auto: none
 
 log:
-  root: ${LOGGING_ROOT}:INFO}
+  level_root: ${LOG_LEVEL_ROOT}

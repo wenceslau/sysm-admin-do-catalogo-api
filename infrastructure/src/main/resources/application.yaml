@@ -86,9 +86,6 @@ storage:
     location-pattern: videoId-{videoId}
 
 logging:
-    level:
-        root: INFO
-    pattern:
-        console: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
-        file: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
+  level:
+    root: ${log.level_root}
 # end config

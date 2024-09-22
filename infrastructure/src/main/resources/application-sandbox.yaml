@@ -23,4 +23,7 @@ spring:
   jpa_hibernate_ddl_auto: none
 
 log:
-  root: ${LOGGING_ROOT}:INFO}
+  level_root: ${LOG_LEVEL_ROOT:INFO}
+
+
+

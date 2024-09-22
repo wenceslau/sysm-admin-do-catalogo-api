@@ -1,7 +1,7 @@
 database:
-  url: jdbc:mysql://localhost:3306/sysm_adm_videos_dev?useSSL=true&serverTimezone=UTC&characterEncoding=UTF-8&createDatabaseIfNotExist=true
-  username: root
-  password: 123456
+  url: ${DATABASE_MYSQL_URL:jdbc:mysql://localhost:3306/sysm_adm_videos_dev?useSSL=true&serverTimezone=UTC&characterEncoding=UTF-8&createDatabaseIfNotExist=true}
+  username: ${DATABASE_MYSQL_USERNAME:root}
+  password: ${DATABASE_MYSQL_PASSWORD:123456}
 
 amqp: #disable in dev environment
   admin_auto-create:
@@ -15,11 +15,11 @@ keycloak: #disable in dev environment
   host:
 
 spring:
-  server_port: 8081
+  server_port: ${SERVER_PORT:8080}
   undertow_threads_worker: 32
   undertow_threads_io: 2
   flyway_enable: true
-  jpa_show_sql: true
+  jpa_show_sql: false
   jpa_hibernate_ddl_auto: none
 
   #On dev environment, this autoconfigured is disabled to keep the dev environment more clean and fast
@@ -30,4 +30,4 @@ spring:
       - org.springframework.boot.autoconfigure.security.oauth2.resource.servlet.OAuth2ResourceServerAutoConfiguration
 
 log:
-  root: INFO
+  level_root: ${LOG_LEVEL_ROOT:INFO}

@@ -36,4 +36,4 @@ spring:
       path: /h2
 
 log:
-  root: INFO
+  level_root: INFO
