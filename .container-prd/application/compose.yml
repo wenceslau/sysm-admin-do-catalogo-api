@@ -1,5 +1,5 @@
 services:
-  app_prd:
+  adm_videos_app_prd:
     container_name: adm_videos_app_prd
     build:
       context: ../../           # Path to the Dockerfile , in this case, the Dockerfile is in the root of the project
