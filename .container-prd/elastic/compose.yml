@@ -4,7 +4,7 @@ services:
     container_name: adm_videos_elasticsearch_prd
     restart: on-failure
     volumes:
-      - ./elastic_vol_01_prd:/usr/share/elasticsearch/data
+      - adm_catalog_elastic_vol_01_prd:/usr/share/elasticsearch/data
     environment:
       - "discovery.type=single-node"
     ports:
@@ -31,7 +31,7 @@ services:
     container_name: sdm_videos_logstash_prd
     restart: on-failure
     volumes:
-      - ./logstash_vol_prd/pipeline:/usr/share/logstash/pipeline:ro
+      - adm_catalog_logstash_vol_prd:/usr/share/logstash/pipeline:ro
     ports:
       - "25826:25826"
       - "5044:5044"
@@ -43,3 +43,9 @@ services:
 networks:
   elastic:
     external: true
+
+volumes:
+  adm_catalog_logstash_vol_prd:
+    name: adm_catalog_logstash_vol_prd
+  adm_catalog_elastic_vol_01_prd:
+    name: adm_catalog_elastic_vol_01_prd

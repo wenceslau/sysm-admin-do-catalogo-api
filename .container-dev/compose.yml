@@ -9,9 +9,10 @@ services:
     security_opt:
       - seccomp:unconfined
     ports:
-      - 3306:3306
+      - 3307:3306
     volumes:
-      - mysql_vol_dev:/var/lib/mysql:rw
+      - adm_catalog_mysql_vol_dev:/var/lib/mysql:rw
 
 volumes:
-    mysql_vol_dev:
+    adm_catalog_mysql_vol_dev:
+      name: adm_catalog_mysql_vol_dev

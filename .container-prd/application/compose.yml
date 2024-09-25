@@ -25,28 +25,35 @@ services:
       - 8084:8084
     networks:
       - adm_videos_services
-#    depends_on:
-#      - filebeat
-#    labels:
-#      filebeat_collector: true
-#
-#  filebeat:
-#    container_name: adm_videos_filebeat
-#    image: docker.elastic.co/beats/filebeat:7.17.9
-#    entrypoint: "filebeat -e -strict.perms=false"                                   # This command resolve issue root permission on filebeat.yml
-#    volumes:
-#      - /var/lib/docker/containers:/var/lib/docker/containers:ro                    # Docker logs
-#      - /var/run/docker.sock:/var/run/docker.sock:ro                                # Additional information about containers
-#      - ./filebeat_vol_prd/filebeat.docker.yml:/usr/share/filebeat/filebeat.yml:ro  # Configuration file
-#      - ./filebeat_vol_prd:/usr/share/filebeat/data:rw                              # Persistence data
-#    user: root                                                                      # Allow access to log files and docker.sock
-#    restart: on-failure
-#    networks:
-#      - adm_videos_services
-#      - elastic
-#
+    depends_on:
+      - filebeat
+    labels:
+      filebeat_collector: true
+
+  filebeat:
+    container_name: adm_videos_filebeat
+    image: docker.elastic.co/beats/filebeat:7.17.9
+    entrypoint: "filebeat -e -strict.perms=false"                                   # This command resolve issue root permission on filebeat.yml
+    volumes:
+      - /var/lib/docker/containers:/var/lib/docker/containers:ro                    # Docker logs
+      - /var/run/docker.sock:/var/run/docker.sock:ro                                # Additional information about containers
+      - ./filebeat.docker.yml:/usr/share/filebeat/filebeat.yml:ro  # Configuration file
+      - adm_catalog_filebeat_vol_prd:/usr/share/filebeat/data:rw                              # Persistence data
+    user: root                                                                      # Allow access to log files and docker.sock
+    restart: on-failure
+    networks:
+      - adm_videos_services
+      - elastic
+
 networks:
   adm_videos_services:
     external: true
   elastic:
     external: true
+
+
+volumes:
+  adm_catalog_filebeat_vol_prd:
+    name: adm_catalog_filebeat_vol_prd
+  adm_catalog_elastic_vol_01_prd:
+    name: adm_catalog_elastic_vol_01_prd
