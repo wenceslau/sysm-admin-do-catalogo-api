@@ -43,7 +43,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 
-@ControllerTest(controllers = CategoryAPI.class)
+//@ControllerTest(controllers = CategoryAPI.class)
 public class ControllerAPITest {
 
     @Autowired
@@ -63,7 +63,7 @@ public class ControllerAPITest {
 
     @MockBean
     private DeleteCategoryUseCase deleteUseCase;
-    
+
     @MockBean
     private ListCategoriesUseCase listUseCase;
 

@@ -64,7 +64,7 @@ import static org.springframework.http.HttpHeaders.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
-@ControllerTest(controllers = VideoAPI.class)
+//@ControllerTest(controllers = VideoAPI.class)
 class VideoAPITest {
 
     @Autowired
