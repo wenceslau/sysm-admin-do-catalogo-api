@@ -22,9 +22,10 @@ services:
       GOOGLE_CLOUD_CREDENTIALS: ${GOOGLE_CLOUD_CREDENTIALS}
       GOOGLE_CLOUD_PROJECT: ${GOOGLE_CLOUD_PROJECT}
     ports:
-      - 8084:8084
+      - 8085:8085
     networks:
       - adm_videos_services
+      - portfolio_network
     depends_on:
       - filebeat
     labels:
@@ -46,6 +47,8 @@ services:
       - elastic
 
 networks:
+  portfolio_network:
+    external: true
   adm_videos_services:
     external: true
   elastic:
