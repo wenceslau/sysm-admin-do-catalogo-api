@@ -2,7 +2,7 @@ target/
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
-#.env
+.env
 .env.local
 /data
 sandbox/.docker
@@ -11,6 +11,7 @@ sandbox/.docker
 .container-prd/elastic/elastic_vol_01_prd
 .container-prd/elastic/logstash_vol_prd
 .container-prd/services/keycloak_vol_prd
+.container-prd/application/.env
 
 ### IntelliJ IDEA ###
 .idea/modules.xml
