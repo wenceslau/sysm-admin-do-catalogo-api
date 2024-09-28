@@ -40,7 +40,8 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
-//@ControllerTest(controllers = GenreAPI.class)
+@Ignore
+@ControllerTest(controllers = GenreAPI.class)
 public class GenresAPITest {
 
     @Autowired

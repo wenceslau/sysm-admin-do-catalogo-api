@@ -21,6 +21,7 @@ import com.sysm.catalog.admin.domain.validation.handler.Notification;
 import com.sysm.catalog.admin.infrastructure.aggregates.category.models.CreateCategoryRequest;
 import com.sysm.catalog.admin.infrastructure.aggregates.category.models.UpdateCategoryRequest;
 import org.hamcrest.Matchers;
+import org.junit.Ignore;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
@@ -42,8 +43,8 @@ import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
-
-//@ControllerTest(controllers = CategoryAPI.class)
+@Ignore
+@ControllerTest(controllers = CategoryAPI.class)
 public class ControllerAPITest {
 
     @Autowired

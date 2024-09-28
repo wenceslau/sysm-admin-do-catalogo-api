@@ -1,0 +1,27 @@
+networks:
+  ntw_keycloak:
+    name: ntw_keycloak
+    external: true
+
+volumes:
+  keycloak_vol_prd:
+    name: keycloak_vol_prd
+    external: true
+
+services:
+  srv_keycloak_prd:
+    container_name: ctn_keycloak_prd
+    image: keycloak/keycloak:23.0
+    environment:
+      KEYCLOAK_ADMIN: ${KEYCLOAK_ADMIN}
+      KEYCLOAK_ADMIN_PASSWORD: ${KEYCLOAK_ADMIN_PASSWORD}
+    ports:
+      - 8080:8080
+    user: 'root'
+    command:
+      - start-dev
+      #- --hostname-url=http://keycloak_prd:8080 # Use this command when the application is inside Docker
+    volumes:
+      - keycloak_vol_prd:/opt/keycloak/data/h2:rw
+    networks:
+      - ntw_keycloak

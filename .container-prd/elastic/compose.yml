@@ -1,51 +1,54 @@
+networks:
+  ntw_elastic:
+    name: ntw_elastic
+    external: true
+
+volumes:
+  vol_adm_catalog_elastic_01_prd:
+    name: vol_adm_catalog_elastic_01_prd
+    external: true
+  vol_adm_catalog_logstash_prd:
+    name: vol_adm_catalog_logstash_prd
+    external: true
+
 services:
-  elasticsearch_prd:
+  elasticsearch:
     image: docker.elastic.co/elasticsearch/elasticsearch:7.17.9
-    container_name: adm_videos_elasticsearch_prd
+    container_name: ctn_adm_videos_elasticsearch_prd
     restart: on-failure
     volumes:
-      - adm_catalog_elastic_vol_01_prd:/usr/share/elasticsearch/data
+      - vol_adm_catalog_elastic_01_prd:/usr/share/elasticsearch/data
     environment:
       - "discovery.type=single-node"
     ports:
       - '9200:9200'
       - '9300:9300'
     networks:
-      - elastic
+      - ntw_elastic
 
-  kibana_prd:
+  srv_kibana_prd:
     image: docker.elastic.co/kibana/kibana:7.17.9
-    container_name: adm_videos_kibana_prd
+    container_name: ctn_adm_videos_kibana_prd
     restart: on-failure
     ports:
       - '5601:5601'
     environment:
-      - ELASTICSEARCH_URL=http://elasticsearch_prd:9200
+      - ELASTICSEARCH_URL=http://elasticsearch:9200
     depends_on:
-      - elasticsearch_prd
+      - elasticsearch
     networks:
-      - elastic
+      - ntw_elastic
 
-  logstash_prd:
+  srv_logstash_prd:
     image: docker.elastic.co/logstash/logstash:7.17.9
-    container_name: sdm_videos_logstash_prd
+    container_name: ctn_adm_videos_logstash_prd
     restart: on-failure
     volumes:
-      - adm_catalog_logstash_vol_prd:/usr/share/logstash/pipeline:ro
+      - vol_adm_catalog_logstash_prd:/usr/share/logstash/pipeline:ro
     ports:
       - "25826:25826"
       - "5044:5044"
     environment:
       LS_JAVA_OPTS: "-Xmx256m -Xms256m"
     networks:
-      - elastic
-
-networks:
-  elastic:
-    external: true
-
-volumes:
-  adm_catalog_logstash_vol_prd:
-    name: adm_catalog_logstash_vol_prd
-  adm_catalog_elastic_vol_01_prd:
-    name: adm_catalog_elastic_vol_01_prd
+      - ntw_elastic

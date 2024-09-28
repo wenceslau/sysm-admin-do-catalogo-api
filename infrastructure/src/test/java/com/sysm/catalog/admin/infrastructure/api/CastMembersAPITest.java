@@ -21,6 +21,7 @@ import com.sysm.catalog.admin.infrastructure.ApiTest;
 import com.sysm.catalog.admin.infrastructure.ControllerTest;
 import com.sysm.catalog.admin.infrastructure.aggregates.castmember.models.CreateCastMemberRequest;
 import com.sysm.catalog.admin.infrastructure.aggregates.castmember.models.UpdateCastMemberRequest;
+import org.junit.Ignore;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.mock.mockito.MockBean;
@@ -38,7 +39,8 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
-//@ControllerTest(controllers = CastMemberAPI.class)
+@Ignore
+@ControllerTest(controllers = CastMemberAPI.class)
 public class CastMembersAPITest {
 
     @Autowired

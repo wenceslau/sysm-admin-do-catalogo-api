@@ -22,6 +22,6 @@ filebeat:
 
 output:
   logstash:
-    hosts: "logstash_prd:5044"
+    hosts: "srv_logstash_prd:5044"
 
 logging.metrics.enabled: false
